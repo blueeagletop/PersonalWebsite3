@@ -36,7 +36,7 @@
                         <ul>
                             <li><a href="http://www.blueeaglefly.com">首页</a></li>
                             <li><a href="./"><img src="public/img/boke.png" style="width: 30px;"><br/>博客</a></li>
-                            <li><a href="../project/"><img src="public/img/GitHub.png" style="width: 30px"><br/>GitHub</a></li>
+                            <li><a href="https://github.com/blueeagletop" target="_black"><img src="public/img/GitHub.png" style="width: 30px"><br/>GitHub</a></li>
                             <li><a href="../message/"><img src="public/img/message.png" style="width: 30px"><br/>社交</a></li>
                             <li><a href="../message/"><img src="public/img/message.png" style="width: 30px"><br/>留言</a></li>
                         </ul>
@@ -52,15 +52,40 @@
             <div class="page">
                 <div class="bokeHeader">
                     <img src="public/img/portrait.png" style="width: 100px;right: 0px">
-                    <div style="position: relative;left:114px;top: -116px;font-size: large"><h1>蓝鹰 BlueEagle</h1>正努力成为全栈工程师的PHP程序员。人生格言：生命不息，追梦不止。</div>
+                    <div class="leftHeader"><h1>蓝鹰 BlueEagle</h1>正努力成为全栈工程师的PHP程序员。人生格言：生命不息，追梦不止。</div>
+                    <div class="rightHeader">
+                        <p><a style="color: red;font-weight: bold;"> 中 文 </a> | <a style="color: #666"> English </a></p>
+                        <p><a>收藏本站</a></p>
+                    </div>
                 </div>
                 <div id="content">
-                    <div class="leftContent">文章分类导航<br /><br /><br /><br /><br /></div>
-                    <br/>
-                    <div class="leftContent">最新评论<br /><br /><br /><br /><br /></div>
-                    <br/>
-                    <div class="leftContent">最近留言<br /><br /><br /><br /><br /></div>
-                    <br/>
+                    <div class="leftContent">
+                        <h2>< 文章分类 ></h2>
+                        <p>一级分类</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;⊙&nbsp;二级分类</p>
+                        <br>
+                    </div>
+                    <br>
+                    <div class="leftContent">
+                        <h2>< 标签搜索 ></h2>
+                        <br /><br /><br /><br /><br /></div>
+                    <br>
+                    <div class="leftContent">
+                        <h2>< 最新评论 ><samp> </samp></h2>
+                        <p><b>用户昵称：</b>评论内容</p>
+                        <br>
+                        <a> >>查看全部 </a>
+                        <br><br>
+                    </div>
+                    <br>
+                    <div class="leftContent">
+                        <h2>< 最近留言 ></h2>
+                        <p><b>用户昵称：</b>留言内容</p>
+                        <br>
+                        <a> >>查看全部 </a>
+                        <br><br>
+                    </div>
+                    <br>
                     <div class="rightContent">@yield('content')</div>
                 </div>
             </div>

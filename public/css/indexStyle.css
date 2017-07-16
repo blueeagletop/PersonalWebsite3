@@ -168,15 +168,29 @@ img { border: 0; max-width: 100%; }
     background-color: #B1CCE7;
     padding: 10px 10px;
     border-radius: 8px;
-    font-size: xx-large;
-    font-weight: bold;
     text-align: left;
+}
+.leftHeader{
+position: relative;
+width: 860px;
+left:114px;
+top: -116px;
+font-size: large;
+font-weight: bold;
+/*line-height: 24px;*/
+}
+.rightHeader{
+    position: absolute;
+    right: 8px;
+    top: 0px;
+    font-size: small;
+    text-align: right;
 }
 .leftContent{
     position:relative;
     overflow:hidden;
     width: 230px;
-    padding: 15px 15px;
+    padding: 5px 15px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     height:auto;
