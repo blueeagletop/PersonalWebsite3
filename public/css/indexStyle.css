@@ -1,0 +1,220 @@
+@charset "UTF-8";
+body, ul, header{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    outline: none;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html { overflow-y: scroll; }
+body {
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+    width: 100%;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 62.5%;
+    line-height: 1;
+}
+
+a{
+    text-decoration: none;
+}
+ul { list-style: none; }
+
+/** page structure **/
+#content {  
+    position: relative;
+    max-width: 1100px;
+    min-height: 100%;
+    margin: 0 auto;
+    height:auto;
+    top: 132px;
+    text-align: left;
+}
+
+header {
+    display: block;
+    width: 60px;
+    height: 50px;
+    background: #5186a8;
+    padding: 15px 0px;
+    margin-bottom: 10px;
+    border-radius: 0px 8px 8px 0px;
+}
+
+#navbar {
+    width: 180px;
+}
+
+.menubtn {
+    position: relative; 
+    z-index: 10;
+    color: #274a61;
+    text-decoration: none;
+    font-size: large;
+    font-weight: bold;
+    left: -25px;
+    top: 2px;
+    padding: 20px;
+    background-image: url('../img/hamburger.png');
+    background-position: left;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+}
+.menubtn:hover, .openmenu .menubtn {
+    color: #bdd43e;
+    background-image: url('../img/hamburger-active.png');
+}
+
+/** toggle menu **/
+body.openmenu {
+    position: fixed;
+    overflow: visible;
+}
+
+#pgcontainer {
+    position: relative; 
+    padding: 0px 0;
+    height: 100%;
+    max-height: 100000px;
+    height:auto;
+    margin: 0;
+    top: 6px;
+}
+
+.overlay {
+    position: fixed;
+    z-index: 99;
+    background-color: rgba(0,0,0,0.5);
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+#hamburgermenu {
+    height: 100%;
+    width: 0;
+    background: #373737;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 101;
+    overflow: hidden;
+    -webkit-box-shadow: 3px 0 7px rgba(0,0,0,0.55);
+    -moz-box-shadow: 3px 0 7px rgba(0,0,0,0.55);
+    box-shadow: 3px 0 7px rgba(0,0,0,0.55);
+}
+#hamburgermenu ul {
+    margin-top: 10px;
+    z-index: 101;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#hamburgermenu ul li {
+    display: block;
+}
+img { border: 0; max-width: 100%; }
+#hamburgermenu ul li a {
+    display: block;
+    min-width: 130px;
+    padding: 18px 8px;
+    color: #cdcdcd;
+    font-size: 1.45em;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+#hamburgermenu li a:hover {
+    color: #fff;
+    background: #2c2c2c;
+}
+.hamburgermenuText{
+    position: absolute;
+    display: block;
+    min-width: 140px;
+    padding: 10px 18px;
+    color: #cdcdcd;
+    text-decoration: none;
+    bottom: 0px;
+    text-align: center;
+}
+.hamburgermenuText a{font-size: medium;color: #fff}
+.openmenu .overlay {
+    top: 0;
+}/*重要，不能删*/
+
+.page{
+    position:absolute; 
+    left:50%; 
+    top:0px; 
+    transform:translate(-50%);
+    width: 1100px;
+}
+.bokeHeader{
+    position:absolute;
+    z-index: 5;
+    top: 0px;
+    width: 1080px;
+    height: 100px;
+    background-color: #B1CCE7;
+    padding: 10px 10px;
+    border-radius: 8px;
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: left;
+}
+.leftContent{
+    position:relative;
+    overflow:hidden;
+    width: 230px;
+    padding: 15px 15px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    height:auto;
+    background-color: #CDE0F4;
+}
+.rightContent{
+    position: absolute;
+    width: 810px;
+    right: 10px;
+    top: 0px;
+}
+.presentLocation{
+    position: absolute;
+    padding: 1px 5px;
+    width: 810px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    background-color: #E8EFF8;
+    left: -6px;
+}
+.article{
+    position: absolute;
+    width: 810px;
+    right: 0px;
+    top: 40px;
+}
+.footer{
+    position: absolute;
+    left:50%; 
+    width: 700px;
+    transform:translate(-50%);
+    bottom: 10px;
+}
+
+/*右侧悬浮导航*/
+#share {position:fixed;_position:absolute;_top:expression(eval(scrollTop+clientHeight)-34+"px"); bottom:34px;right:30px;width:30px;zoom:1;}
+#share a{border-radius:6px;background-image:url('../img/toTop.png'); background-repeat:no-repeat; display:block; width:42px; height:42px; margin-bottom:2px; overflow:hidden; text-indent:-999px;-webkit-transition: all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;-o-transition: all 0.2s ease-in-out;-ms-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;}
+#share a{right:-12px;}
+#share a#totop{background-position:0 0;position:absolute;bottom:164px;cursor:pointer;}
+#share a#totop:hover {background-position:-52px 0px;width:78px; height:42px;}
+
