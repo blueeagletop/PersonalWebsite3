@@ -31,7 +31,7 @@
     
 <br><br><br><br><br>
 <div class="footer">
-    Copyright@ 蓝鹰&nbsp;&nbsp;|&nbsp;&nbsp;Email:blueeagletop@163.com&nbsp;&nbsp;|&nbsp;&nbsp;蓝鹰的个人博客3.0
+    Copyright@ 蓝鹰&nbsp;&nbsp;|&nbsp;&nbsp;E-mail:blueeagletop@163.com&nbsp;&nbsp;|&nbsp;&nbsp;蓝鹰的个人博客3.0
 </div> 
 </div>
 
