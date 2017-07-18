@@ -61,7 +61,7 @@
                 <div id="content">
                     <div class="leftContent">
                         <h2>< 文章分类 ></h2>
-                        <p>一级分类</p>
+                        <h3>一级分类</h3>
                         <p>&nbsp;&nbsp;&nbsp;&nbsp;⊙&nbsp;二级分类</p>
                         <br>
                     </div>

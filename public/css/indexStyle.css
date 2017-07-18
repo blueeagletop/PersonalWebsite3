@@ -217,6 +217,13 @@ font-weight: bold;
     right: 0px;
     top: 40px;
 }
+.tag{
+    color: #3366FF;
+    background-color: #D3E0EE;
+    padding: 4px 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+}
 .footer{
     position: absolute;
     left:50%; 
