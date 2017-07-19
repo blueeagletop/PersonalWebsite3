@@ -13,6 +13,14 @@
         <script type="text/javascript" src="public/js/toTop.js"></script><!-- 回到顶部 -->
         <script type="text/javascript" src="public/js/search.js"></script><!-- 动态搜索按钮 -->
 
+        <!--        文章分类导航栏特效-->
+        <style type="text/css">
+            .leftContent{height:auto !important;overflow:visible !important;height:100% !important;}
+            a{color:#000000;}
+            .leftContent dd{display: none}
+            dt.on{font-size: larger;color: #31708f}
+        </style>
+        
     </head>
     <body>
 
@@ -59,30 +67,46 @@
                     </div>
                 </div>
                 <div id="content">
-                    <div class="leftContent">
+                    <div class="leftContent" id="leftContent">
                         <h2>< 文章分类 ></h2>
-                        <h3>一级分类</h3>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;⊙&nbsp;二级分类</p>
+                        
+                        @foreach($categorysFirst as $CF)
+                        <dl>
+                            <dt><h3><a href="#">{{$CF->title}}</a></h3></dt>
+                                @foreach($categorys as $ca)
+                                    @if($ca->parent_id == $CF->id)
+                                    <dd class="first_dd"><p><a href="category?={{$ca->id}}">⊙&nbsp;{{$ca->title}}</a></p></dd>
+                                    @endif
+                                @endforeach
+                        </dl>
+                        @endforeach
                         <br>
                     </div>
                     <br>
                     <div class="leftContent">
                         <h2>< 标签搜索 ></h2>
-                        <br /><br /><br /><br /><br /></div>
+                        <p>
+                        @foreach($tags as $tag)
+                            <a class="tag" style="background-color: #add8e6" href="{{$tag->id}}">{{$tag->name}}</a>&nbsp;&nbsp;
+                        @endforeach
+                        </p>
+                        <br /></div>
                     <br>
                     <div class="leftContent">
                         <h2>< 最新评论 ><samp> </samp></h2>
-                        <p><b>用户昵称：</b>评论内容</p>
-                        <br>
-                        <a> >>查看全部 </a>
+                        @foreach($comments as $com)
+                        <p class="line_height"><b>{{$com->id}}：</b>{{$com->detail}}</p>
+                        @endforeach
+                        <a style="color: #666" href="comment"> >>查看全部 </a>
                         <br><br>
                     </div>
                     <br>
                     <div class="leftContent">
                         <h2>< 最近留言 ></h2>
-                        <p><b>用户昵称：</b>留言内容</p>
-                        <br>
-                        <a> >>查看全部 </a>
+                        @foreach($messages as $mes)
+                        <p class="line_height"><b>{{$mes->id}}：</b>{{$mes->detail}}</p>
+                        @endforeach
+                        <a style="color: #666" href="message"> >>查看全部 </a>
                         <br><br>
                     </div>
                     <br>
@@ -90,7 +114,22 @@
                 </div>
             </div>
         </div>
+
+
+        
+<script type="text/javascript">//文章分类导航栏特效
+    $(function() {
+        $("#leftContent").find("dt").click(function() { //一级菜单点击
+            if (!$(this).hasClass("on")) { //当前一级菜单不选中状态才切换
+                $("#leftContent").find("dt").removeClass("on");//所有的一级菜单去除选中样式
+                $(this).addClass("on");//当前一级菜单去除选中样式
+                $('dd').slideUp();//所有二级菜单隐藏
+                $(this).nextAll('dd').slideToggle();//当前所有二级菜单切换
+            }
+        });
+    })
+</script>
     </body>
-    <script type="text/javascript"></script>
+
     @yield('my-js')
 </html>

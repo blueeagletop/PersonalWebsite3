@@ -57,9 +57,9 @@ return [
             'driver' => 'mysql',
             'host' => 'localhost',  /* 数据库连接地址 */
             'port' => '3306', /* 数据库连接端口 */
-            'database' => 'forge', /* 数据库名 */
-            'username' => 'forge', /* 数据库用户名 */
-            'password' => '', /* 数据库用户密码 */
+            'database' => 'blueeagle', /* 数据库名 */
+            'username' => 'root', /* 数据库用户名 */
+            'password' => 'fly516888', /* 数据库用户密码 */
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',

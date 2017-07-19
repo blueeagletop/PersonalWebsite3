@@ -199,6 +199,7 @@ font-weight: bold;
 .rightContent{
     position: absolute;
     width: 810px;
+    min-height: 100%;
     right: 10px;
     top: 0px;
 }
@@ -214,22 +215,27 @@ font-weight: bold;
 .article{
     position: absolute;
     width: 810px;
+    min-height: 100%;
     right: 0px;
     top: 40px;
 }
 .tag{
     color: #3366FF;
     background-color: #D3E0EE;
+    line-height: 30px;
     padding: 4px 6px;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
+}
+.line_height{
+    line-height: 18px;
 }
 .footer{
     position: absolute;
     left:50%; 
     width: 700px;
     transform:translate(-50%);
-    bottom: 10px;
+    bottom: 6px;
 }
 
 /*右侧悬浮导航*/
