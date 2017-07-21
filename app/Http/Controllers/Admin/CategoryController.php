@@ -22,5 +22,10 @@ class CategoryController extends Controller
         }
         
         return view('admin.category')->with('categorys',$categorys);
-    }    
+    }
+    
+    public function addCategory(){
+        $categorys= Category::whereNull('parent_id')->get();
+        return view('admin.addCategory')->with('categorys',$categorys);
+    }
 }

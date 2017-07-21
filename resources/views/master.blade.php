@@ -42,7 +42,7 @@
                     <!-- use captain icon for toggle menu -->
                     <div id="hamburgermenu">
                         <ul>
-                            <li><a href="http://www.blueeaglefly.com">首页</a></li>
+                            <li><a href="http://www.blueeagle.top">首页</a></li>
                             <li><a href="./"><img src="public/img/boke.png" style="width: 30px;"><br/>博客</a></li>
                             <li><a href="https://github.com/blueeagletop" target="_black"><img src="public/img/GitHub.png" style="width: 30px"><br/>GitHub</a></li>
                             <li><a href="../message/"><img src="public/img/sociality.png" style="width: 30px"><br/>社交</a></li>
@@ -75,7 +75,7 @@
                             <dt><h3><a href="#">{{$CF->title}}</a></h3></dt>
                                 @foreach($categorys as $ca)
                                     @if($ca->parent_id == $CF->id)
-                                    <dd class="first_dd"><p><a href="category?={{$ca->id}}">⊙&nbsp;{{$ca->title}}</a></p></dd>
+                                    <dd class="first_dd"><p><a href="category={{$ca->id}}">⊙&nbsp;{{$ca->title}}</a></p></dd>
                                     @endif
                                 @endforeach
                         </dl>
@@ -84,10 +84,10 @@
                     </div>
                     <br>
                     <div class="leftContent">
-                        <h2>< 标签搜索 ></h2>
+                        <h2>< 按标签查看 ></h2>
                         <p>
                         @foreach($tags as $tag)
-                            <a class="tag" style="background-color: #add8e6" href="{{$tag->id}}">{{$tag->name}}</a>&nbsp;&nbsp;
+                            <a class="tag" style="background-color: #add8e6" href="tag={{$tag->id}}">{{$tag->name}}</a>&nbsp;&nbsp;
                         @endforeach
                         </p>
                         <br /></div>
@@ -95,10 +95,8 @@
                     <div class="leftContent">
                         <h2>< 最新评论 ><samp> </samp></h2>
                         @foreach($comments as $com)
-                        <p class="line_height"><b>{{$com->id}}：</b>{{$com->detail}}</p>
+                        <p class="line_height"><a href="{{$com->article_id}}"><b>{{$com->id}}：</b>{{$com->detail}}</a></p>
                         @endforeach
-                        <a style="color: #666" href="comment"> >>查看全部 </a>
-                        <br><br>
                     </div>
                     <br>
                     <div class="leftContent">

@@ -11,8 +11,11 @@
 |
 */
 
-Route::get('/{category}', 'View\IndexController@index');
-
+Route::get('/', 'View\IndexController@index');
+Route::get('/category={category_id}', 'View\CategoryController@categoryArticle');
+Route::get('/categoryF={categoryF_id}', 'View\CategoryController@firstCategoryArticle');
+Route::get('/article={article_id}', 'View\ArticleController@detail');
+Route::get('/tag={tag_id}', 'View\TagController@tagArticle');
 
 Route::group(['prefix'=>'service'],function(){
     Route::get('/validate_code/create','Service\ValidateController@create');
@@ -27,10 +30,15 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('welcome','Admin\IndexController@welcome');
     Route::get('article','Admin\ArticleController@article');
     Route::get('category','Admin\CategoryController@category');
+    Route::get('addCategory','Admin\CategoryController@addCategory');
     Route::get('tag','Admin\IndexController@welcome');
     Route::get('comment','Admin\IndexController@welcome');
     Route::get('message','Admin\IndexController@welcome');
     Route::get('member','Admin\IndexController@welcome');
     Route::get('member/ban','Admin\IndexController@welcome');
     Route::get('admin','Admin\IndexController@welcome');
+    
+    Route::group(['prefix'=>'service'],function(){
+        Route::get('addCategory','Service\CategoryController@addCategory');
+    });
 });

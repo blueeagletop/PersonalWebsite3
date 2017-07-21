@@ -13,27 +13,26 @@ use App\ORM\Tag;
 use App\ORM\Comment;
 use App\ORM\Message;
 
-class IndexController extends Controller
+class TagController extends Controller
 {
-    public function index(){
+    public function tagArticle($tag_id){
         //一级分类
         $categorysFirst= Category::whereNull('parent_id')->get();
         //所有分类
         $categorys= Category::all();
         
-        //获取全部文章标题
-        $articles= Article::all();
-        
+        //根据分类id获取文章标题
+        $articles= Article::where('tag_id',$tag_id)->get();
+        //文章对应的标签
         foreach ($articles as $article){
-            //得到文章对应的分类名
-            if($article->category_id !=null && $article != ''){
-                $article->category = Category::find($article->category_id);
-            }
-            //文章对应的标签
             if($article->tag_id !=null && $article != ''){
                 $article->tag = Tag::find($article->tag_id);
             }
+            if($article->category_id !=null && $article != ''){
+                $article->category = Category::find($article->category_id);
+            }
         }
+        $tag=Tag::find($tag_id);
         
         $tags=Tag::all();
         
@@ -41,9 +40,12 @@ class IndexController extends Controller
         
         $messages=Message::all();
         
-        return view('index')->with('categorysFirst',$categorysFirst)
+        return view('tagArticle')->with('categorysFirst',$categorysFirst)
                 ->with('categorys',$categorys)
                 ->with('articles',$articles)
+                ->with('tag',$tag)
+                
+//                左侧导航栏
                 ->with('tags',$tags)
                 ->with('comments',$comments)
                 ->with('messages',$messages);

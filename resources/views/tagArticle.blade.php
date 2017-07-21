@@ -3,10 +3,9 @@
 @section('title', "蓝鹰的博客——BlueEagle's boke")
 
 @section('content')
-<div class="presentLocation"><p>&nbsp;当前位置&nbsp;：&nbsp;<a href="./">全部文章</a></p></div>
+<div class="presentLocation"><p>&nbsp;当前位置&nbsp;：&nbsp;<a href="./">全部文章</a>&nbsp;>>&nbsp;按标签查看&nbsp;>>&nbsp;{{$tag->name}}</p></div>
 <div class="article">
-    
-    
+        
     @foreach($articles as $ar)
     <br/>
     <h2><a href="article={{$ar->id}}">{{$ar->title}}</a></h2>
@@ -19,7 +18,6 @@
         
     <hr/>
     @endforeach
-
 
 <br><br><br><br><br>
 
