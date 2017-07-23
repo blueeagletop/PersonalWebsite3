@@ -31,6 +31,7 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('article','Admin\ArticleController@article');
     Route::get('category','Admin\CategoryController@category');
     Route::get('addCategory','Admin\CategoryController@addCategory');
+    Route::get('editCategory={category_id}','Admin\CategoryController@editCategory');
     Route::get('tag','Admin\IndexController@welcome');
     Route::get('comment','Admin\IndexController@welcome');
     Route::get('message','Admin\IndexController@welcome');
@@ -39,6 +40,8 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('admin','Admin\IndexController@welcome');
     
     Route::group(['prefix'=>'service'],function(){
-        Route::get('addCategory','Service\CategoryController@addCategory');
+        Route::post('addCategory','Admin\CategoryController@doAddCategory');
+        Route::post('editCategory','Admin\CategoryController@doEditCategory');
+        Route::post('delCategory','Admin\CategoryController@doDelCategory');
     });
 });

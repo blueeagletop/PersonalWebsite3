@@ -39,12 +39,6 @@
 	</form>
 </article>
 
-<!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="../public/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
-<script type="text/javascript" src="../public/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script> 
-<script type="text/javascript" src="../public/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script> 
-<!--/请在上方写此页面业务相关的脚本-->
-
 @endsection
 
 @section('my-js')
