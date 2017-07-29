@@ -11,37 +11,37 @@ use App\Models\M3Result;
 class CategoryController extends Controller {
 
     public function category() {
-        $categorys = Category::all();
-        foreach ($categorys as $category) {
+        $categories = Category::all();
+        foreach ($categories as $category) {
             if ($category->parent_id != null && $category != '') {
                 $category->parent = Category::find($category->parent_id);
             }
         }
 
-        return view('admin.category')->with('categorys', $categorys);
+        return view('admin.category')->with('categories', $categories);
     }
 
     public function addCategory() {
-        $categorys = Category::whereNull('parent_id')->get();
-        return view('admin.addCategory')->with('categorys', $categorys);
+        $categories = Category::whereNull('parent_id')->get();
+        return view('admin.categoryAdd')->with('categories', $categories);
     }
     public function editCategory($category_id){
-        $categorys = Category::whereNull('parent_id')->get();
+        $categories = Category::whereNull('parent_id')->get();
         $category= Category::find($category_id);
         $category->parent = Category::find($category->parent_id);
-        return view('admin.editCategory')->with('categorys', $categorys)
+        return view('admin.categoryEdit')->with('categories', $categories)
                 ->with('category', $category);
     }
 
     /*     * ***************************  操作数据库  **************************** */
 
     public function doAddCategory(Request $request) {
-        $title = $request->input('title', '');
+        $name = $request->input('name', '');
         $parent_id = $request->input('parent_id', '');
         $compositor = $request->input('compositor', '');
 
         $category = new Category;
-        $category->title = $title;
+        $category->name = $name;
 
         if ($parent_id == null) {
             $category->parent_id = null;
@@ -66,12 +66,12 @@ class CategoryController extends Controller {
     
     public function doEditCategory(Request $request) {
         $id=$request->input('id', '');
-        $title = $request->input('title', '');
+        $name = $request->input('name', '');
         $parent_id = $request->input('parent_id', '');
         $compositor = $request->input('compositor', '');
 
         $category = Category::find($id);
-        $category->title = $title;
+        $category->name = $name;
 
         if ($parent_id == null) {
             $category->parent_id = null;

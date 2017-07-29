@@ -70,12 +70,12 @@
                     <div class="leftContent" id="leftContent">
                         <h2>< 文章分类 ></h2>
                         
-                        @foreach($categorysFirst as $CF)
+                        @foreach($categoriesFirst as $CF)
                         <dl>
-                            <dt><h3><a href="#">{{$CF->title}}</a></h3></dt>
-                                @foreach($categorys as $ca)
+                            <dt><h3><a href="#">{{$CF->name}}</a></h3></dt>
+                                @foreach($categories as $ca)
                                     @if($ca->parent_id == $CF->id)
-                                    <dd class="first_dd"><p><a href="category={{$ca->id}}">⊙&nbsp;{{$ca->title}}</a></p></dd>
+                                    <dd class="first_dd"><p><a href="category={{$ca->id}}">⊙&nbsp;{{$ca->name}}</a></p></dd>
                                     @endif
                                 @endforeach
                         </dl>

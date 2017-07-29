@@ -3,12 +3,12 @@
 @section('title', "蓝鹰的博客——BlueEagle's boke")
 
 @section('content')
-<div class="presentLocation"><p>&nbsp;当前位置&nbsp;：&nbsp;<a href="./">全部文章</a>&nbsp;>>&nbsp;{{$categoryF->title}}&nbsp;>>&nbsp;<a href="category={{$article->category->id}}">{{$article->category->title}}</a>&nbsp;>>&nbsp;文章详情</p></div>
+<div class="presentLocation"><p>&nbsp;当前位置&nbsp;：&nbsp;<a href="./">全部文章</a>&nbsp;>>&nbsp;{{$categoryF->name}}&nbsp;>>&nbsp;<a href="category={{$article->category->id}}">{{$article->category->name}}</a>&nbsp;>>&nbsp;文章详情</p></div>
 <div class="article">
         
     <br/>
     <h2 style="font-size: large;">{{$article->title}}&nbsp;&nbsp;&nbsp;&nbsp;</h2>
-    <samp style="color: #666">{{$article->created_at}}&nbsp;&nbsp;文章分类：{{$article->category->title}}&nbsp;&nbsp;</samp>
+    <samp style="color: #666">{{$article->created_at}}&nbsp;&nbsp;文章分类：{{$article->category->name}}&nbsp;&nbsp;</samp>
     
         @if($article->tag_id != null)
         <a class="tag">{{$article->tag->name}}</a>&nbsp;&nbsp;

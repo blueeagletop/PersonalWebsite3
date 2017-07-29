@@ -8,9 +8,9 @@
     <form action="" method="post"  class="form form-horizontal" id="form-category-edit">
         {{ csrf_field() }}
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>分类标题</label>
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>分类名</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" style="width: 50%" value="{{$category->title}}" placeholder="" name="title">
+                <input type="text" class="input-text" style="width: 50%" value="{{$category->name}}" placeholder="" name="name">
             </div>
         </div>
         <div class="row cl">
@@ -18,13 +18,13 @@
             <div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">
                     <select class="select" name="parent_id" size="1">
                         @if($category->parent != null)
-                        <option value="{{$category->parent->id}}">{{$category->parent->title}}</option>
+                        <option value="{{$category->parent->id}}">{{$category->parent->name}}</option>
                         <option value="">无</option>
                         @else
                         <option value="">无</option>
                         @endif
-                        @foreach($categorys as $cate)
-                        <option value="{{$cate->id}}" >{{$cate->title}}</option>
+                        @foreach($categories as $cate)
+                        <option value="{{$cate->id}}" >{{$cate->name}}</option>
                         @endforeach
                     </select>
                 </span> 
@@ -61,7 +61,7 @@
                 dataType: 'json',
                 data: {
                     id:{{$category->id}},
-                    title: $('input[name=title]').val(),
+                    name: $('input[name=name]').val(),
                     compositor: $('input[name=compositor]').val(),
                     parent_id: $('select[name=parent_id] option:selected').val(),
 //            preview: ($('#preview_id').attr('src')!='images/icon-add.png'?$('#preview_id').attr('src'):''),

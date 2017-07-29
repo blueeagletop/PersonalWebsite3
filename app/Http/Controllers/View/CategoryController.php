@@ -17,9 +17,9 @@ class CategoryController extends Controller
 {
     public function categoryArticle($category){
         //一级分类
-        $categorysFirst= Category::whereNull('parent_id')->get();
+        $categoriesFirst= Category::whereNull('parent_id')->get();
         //所有分类
-        $categorys= Category::all();
+        $categories= Category::all();
         
         //根据分类id获取文章标题
         $articles= Article::where('category_id',$category)->get();
@@ -41,8 +41,8 @@ class CategoryController extends Controller
         
         $messages=Message::all();
         
-        return view('categoryArticle')->with('categorysFirst',$categorysFirst)
-                ->with('categorys',$categorys)
+        return view('categoryArticle')->with('categoriesFirst',$categoriesFirst)
+                ->with('categories',$categories)
                 ->with('articles',$articles)
                 ->with('category',$category)
                 ->with('categoryF',$categoryF)
@@ -53,9 +53,9 @@ class CategoryController extends Controller
     
     public function firstCategoryArticle($categoryF_id){
         //一级分类
-        $categorysFirst= Category::whereNull('parent_id')->get();
+        $categoriesFirst= Category::whereNull('parent_id')->get();
         //所有分类
-        $categorys= Category::all();
+        $categories= Category::all();
         
         //待完成功能：根据父类ID得到子类id，然后查找文章
         //根据分类id获取文章标题
@@ -76,8 +76,8 @@ class CategoryController extends Controller
         
         $messages=Message::all();
         
-        return view('categoryArticle')->with('categorysFirst',$categorysFirst)
-                ->with('categorys',$categorys)
+        return view('categoryArticle')->with('categoriesFirst',$categoriesFirst)
+                ->with('categories',$categories)
                 ->with('articles',$articles)
                 ->with('category',$category)
                 ->with('categoryF',$categoryF)

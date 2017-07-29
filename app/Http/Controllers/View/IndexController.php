@@ -17,9 +17,9 @@ class IndexController extends Controller
 {
     public function index(){
         //一级分类
-        $categorysFirst= Category::whereNull('parent_id')->get();
+        $categoriesFirst= Category::whereNull('parent_id')->get();
         //所有分类
-        $categorys= Category::all();
+        $categories= Category::all();
         
         //获取全部文章标题
         $articles= Article::all();
@@ -41,8 +41,8 @@ class IndexController extends Controller
         
         $messages=Message::all();
         
-        return view('index')->with('categorysFirst',$categorysFirst)
-                ->with('categorys',$categorys)
+        return view('index')->with('categoriesFirst',$categoriesFirst)
+                ->with('categories',$categories)
                 ->with('articles',$articles)
                 ->with('tags',$tags)
                 ->with('comments',$comments)

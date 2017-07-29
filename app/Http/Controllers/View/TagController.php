@@ -17,9 +17,9 @@ class TagController extends Controller
 {
     public function tagArticle($tag_id){
         //一级分类
-        $categorysFirst= Category::whereNull('parent_id')->get();
+        $categoriesFirst= Category::whereNull('parent_id')->get();
         //所有分类
-        $categorys= Category::all();
+        $categories= Category::all();
         
         //根据分类id获取文章标题
         $articles= Article::where('tag_id',$tag_id)->get();
@@ -40,8 +40,8 @@ class TagController extends Controller
         
         $messages=Message::all();
         
-        return view('tagArticle')->with('categorysFirst',$categorysFirst)
-                ->with('categorys',$categorys)
+        return view('tagArticle')->with('categoriesFirst',$categoriesFirst)
+                ->with('categories',$categories)
                 ->with('articles',$articles)
                 ->with('tag',$tag)
                 

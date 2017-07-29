@@ -3,14 +3,14 @@
 @section('title', "蓝鹰的博客——BlueEagle's boke")
 
 @section('content')
-<div class="presentLocation"><p>&nbsp;当前位置&nbsp;：&nbsp;<a href="./">全部文章</a>&nbsp;>>&nbsp;{{$categoryF->title}}&nbsp;>>&nbsp;<a href="">{{$category->title}}</a></p></div>
+<div class="presentLocation"><p>&nbsp;当前位置&nbsp;：&nbsp;<a href="./">全部文章</a>&nbsp;>>&nbsp;{{$categoryF->name}}&nbsp;>>&nbsp;<a href="">{{$category->name}}</a></p></div>
 <div class="article">
         
     @foreach($articles as $ar)
     <br/>
     <h2><a href="article={{$ar->id}}">{{$ar->title}}</a></h2>
     <p><a style="color: #666" href="article={{$ar->id}}">&nbsp;&nbsp;>> 查看详情 </a></p>
-    <samp style="color: #666">{{$ar->created_at}}&nbsp;&nbsp;文章分类：{{$category->title}}&nbsp;&nbsp;</samp>
+    <samp style="color: #666">{{$ar->created_at}}&nbsp;&nbsp;文章分类：{{$category->name}}&nbsp;&nbsp;</samp>
         
         @if($ar->tag != null)
         <a class="tag">{{$ar->tag->name}}</a>&nbsp;&nbsp;

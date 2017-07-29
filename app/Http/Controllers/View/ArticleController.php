@@ -18,9 +18,9 @@ class ArticleController extends Controller
 {
     public function detail($article_id){
         //一级分类
-        $categorysFirst= Category::whereNull('parent_id')->get();
+        $categoriesFirst= Category::whereNull('parent_id')->get();
         //所有分类
-        $categorys= Category::all();
+        $categories= Category::all();
         
         //获取文章标题
         $article= Article::where('id',$article_id)->first();
@@ -36,14 +36,14 @@ class ArticleController extends Controller
         //文章分类对应的父级分类
         $categoryF= Category::where('id',$article->category->parent_id)->first();
         
-        $detail= ArticleDetail::where('title_id',$article_id)->first();
+        $detail= ArticleDetail::where('article_id',$article_id)->first();
         
         $tags=Tag::all();
         $comments=Comment::all();
         $messages=Message::all();
         
-        return view('articleDetail')->with('categorysFirst',$categorysFirst)
-                ->with('categorys',$categorys)
+        return view('articleDetail')->with('categoriesFirst',$categoriesFirst)
+                ->with('categories',$categories)
                 ->with('article',$article)
                 ->with('categoryF',$categoryF)
                 ->with('detail',$detail)

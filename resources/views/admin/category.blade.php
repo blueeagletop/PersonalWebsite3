@@ -10,7 +10,7 @@
 		<input type="text" class="input-text" style="width:250px" placeholder="输入分类名称" id="" name="">
 		<button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜文章分类</button>
 	</div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="addCategory('添加文章分类','addCategory')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加文章分类</a> <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> </span> <span class="r">共有< <strong>{{count($categorys)}}</strong> >个分类</span> </div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="addCategory('添加文章分类','addCategory')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加文章分类</a> <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> </span> <span class="r">共有< <strong>{{count($categories)}}</strong> >个分类</span> </div>
 	<table class="table table-border table-bordered table-bg">
 		<thead>
 			<tr>
@@ -26,20 +26,20 @@
 			</tr>
 		</thead>
 		<tbody>
-                    @foreach($categorys as $cate)
+                    @foreach($categories as $cate)
 			<tr class="text-c">
 				<td><input type="checkbox" value="1" name=""></td>
 				<td>{{$cate->id}}</td>
-				<td>{{$cate->title}}</td>
+				<td>{{$cate->name}}</td>
 				<td>
                                 @if($cate->parent != null)
-                                {{$cate->parent->title}}
+                                {{$cate->parent->name}}
                                 @endif
                                 </td>
 				<td class="td-status"><span class="label label-success radius">{{$cate->compositor}}</span></td>
 				<td class="td-manage">
                                     <a title="编辑" href="javascript:;" onclick="editCategory('编辑分类','editCategory={{$cate->id}}','1','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i>编辑</a> 
-                                    <a title="删除" href="javascript:;" onclick='delCategory("{{$cate->title}}","{{$cate->id}}")' class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i>删除</a></td>
+                                    <a title="删除" href="javascript:;" onclick='delCategory("{{$cate->name}}","{{$cate->id}}")' class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i>删除</a></td>
 			</tr>
                     @endforeach
 		</tbody>

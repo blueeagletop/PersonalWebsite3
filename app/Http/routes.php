@@ -23,12 +23,15 @@ Route::group(['prefix'=>'service'],function(){
 });
 
 
-/******  后台管理  ******/
+/******************  后台管理  ******************/
 Route::group(['prefix'=>'admin'],function(){
     Route::get('login','Admin\LoginController@toLogin');
     Route::get('index','Admin\IndexController@index');
     Route::get('welcome','Admin\IndexController@welcome');
+    
     Route::get('article','Admin\ArticleController@article');
+    Route::get('addArticle','Admin\ArticleController@addArticle');
+    
     Route::get('category','Admin\CategoryController@category');
     Route::get('addCategory','Admin\CategoryController@addCategory');
     Route::get('editCategory={category_id}','Admin\CategoryController@editCategory');
@@ -39,7 +42,11 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('member/ban','Admin\IndexController@welcome');
     Route::get('admin','Admin\IndexController@welcome');
     
+    
+    /******* 操作数据库 *******/
     Route::group(['prefix'=>'service'],function(){
+        Route::post('addArticle','Admin\ArticleController@doAddArticle');
+        
         Route::post('addCategory','Admin\CategoryController@doAddCategory');
         Route::post('editCategory','Admin\CategoryController@doEditCategory');
         Route::post('delCategory','Admin\CategoryController@doDelCategory');
