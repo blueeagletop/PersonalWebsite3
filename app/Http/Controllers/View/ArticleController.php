@@ -36,7 +36,7 @@ class ArticleController extends Controller
         //文章分类对应的父级分类
         $categoryF= Category::where('id',$article->category->parent_id)->first();
         
-        $detail= ArticleDetail::where('article_id',$article_id)->first();
+        $articleDetail= ArticleDetail::where('article_id',$article_id)->first();
         
         $tags=Tag::all();
         $comments=Comment::all();
@@ -46,7 +46,7 @@ class ArticleController extends Controller
                 ->with('categories',$categories)
                 ->with('article',$article)
                 ->with('categoryF',$categoryF)
-                ->with('detail',$detail)
+                ->with('articleDetail',$articleDetail)
                 ->with('tags',$tags)
                 ->with('comments',$comments)
                 ->with('messages',$messages);

@@ -37,9 +37,18 @@
 <script type="text/javascript" src="/blueeagle/htdocs/public/admin/js/H-ui.js"></script>
 <script type="text/javascript" src="/blueeagle/htdocs/public/admin/js/H-ui.admin.js"></script>
 <script type="text/javascript" src="/blueeagle/htdocs/public/admin/lib/Validform/5.3.2/Validform.min.js"></script>
-<script type="text/javascript" src="/blueeagle/htdocs/public/admin/lib/ueditor/1.4.3/ueditor.config.js"></script>
+<!--<script type="text/javascript" src="/blueeagle/htdocs/public/admin/lib/ueditor/1.4.3/ueditor.config.js"></script>
 <script type="text/javascript" src="/blueeagle/htdocs/public/admin/lib/ueditor/1.4.3/ueditor.all.min.js"></script>
-<script type="text/javascript" src="/blueeagle/htdocs/public/admin/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="/blueeagle/htdocs/public/admin/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>-->
+
+<script charset="utf-8" src="/blueeagle/htdocs/public/admin/plugins/kindeditor/kindeditor-all-min.js"></script>
+<script charset="utf-8" src="/blueeagle/htdocs/public/admin/plugins/kindeditor/lang/zh-CN.js"></script>
+<script>
+        KindEditor.ready(function(K) {
+                window.editor = K.create('#editor_id');
+        });
+</script>
+
 
 @yield('my-js')
 </html>

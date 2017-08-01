@@ -22,7 +22,7 @@ class IndexController extends Controller
         $categories= Category::all();
         
         //获取全部文章标题
-        $articles= Article::all();
+        $articles= Article::where('id', '>', 0)->orderBy('created_at','desc')->get();
         
         foreach ($articles as $article){
             //得到文章对应的分类名

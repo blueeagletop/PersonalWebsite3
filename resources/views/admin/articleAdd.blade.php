@@ -4,6 +4,12 @@
 
 @section('content')
 
+<script>
+        KindEditor.ready(function(K) {
+                window.editor = K.create('#editor_id');
+        });
+</script>
+
 <form action="" method="post" class="form form-horizontal" id="form-article-add">
     {{ csrf_field() }}
     <div class="row cl">
@@ -38,10 +44,10 @@
     <div class="row cl">
         <label class="form-label col-2">详细内容：</label>
         <div class="formControls col-8">
-            <script name="editor" id="editor" type="text/plain" style="width:100%; height:500px;"></script>
+            <textarea name="editor" id="editor_id" style="width:100%;height:500px"></textarea>
         </div>
     </div>
-    <div class="row cl">
+<!--    <div class="row cl">
         <label class="form-label col-3"><span class="c-red">*</span>是否发布：</label>
         <div class="formControls col-5 skin-minimal">
             <div class="radio-box">
@@ -54,7 +60,7 @@
             </div>
         </div>
         <div class="col-4"> </div>
-    </div>
+    </div>-->
     <!--        <div class="row cl">
                 <label class="form-label col-2"><span class="c-red">*</span>是否发布：</label>
                 <div class="formControls col-5 skin-minimal">
@@ -80,8 +86,6 @@
 
 @section('my-js')
 <script type="text/javascript">
-    var ue = UE.getEditor('editor');
-    ue.execCommand("getlocaldata");
 
     $("#form-article-add").Validform({
         tiptype: 2,
@@ -98,8 +102,9 @@
                     title: $('input[name=title]').val(),
                     category_id: $('input[name=category_id]').val(),
                     top: $('input[name=top]').val(),
-                    detail: ue.getContent(),
+                    detail: editor.html(),
                     tag: $('input[name=tag]').val(),
+                    status: '1',
                     _token: "{{csrf_token()}}"
                 },
                 success: function (data) {

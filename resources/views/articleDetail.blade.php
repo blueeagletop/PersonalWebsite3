@@ -15,13 +15,18 @@
         @endif
         
     <p>
+        @if($articleDetail->source == null)
     <li>作者：蓝鹰 BlueEagle</li>
-    <li>本文地址：http://www.blueeagle.top/article=2</li>
+    <li>本文地址：http://www.blueeagle.top/article={{$article->id}}</li>
     <li>转载请注明出处</li>
+    @else
+    <li>本文地址：http://www.blueeagle.top/article={{$article->id}}</li>
+    <li>文章转自：{{$articleDetail->source}}</li>
+    @endif
     </p>
-    <p style="font-size: medium;line-height: 1.6">{{$detail->detail}}</p>   
+    <div style="font-size: medium;line-height: 2.0">{!! $articleDetail->detail !!}</div>   
     <hr/>
-    <h3>< 共有 0条 评论 >&nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#C00;">请勿以任何形式发广告，一经发现将被永久禁言</a></h3>
+    <h3>< 共有 0条 评论 >&nbsp;&nbsp;&nbsp;&nbsp;<a style="color:#C00;">请勿发广告或人身攻击，一经发现将被永久禁言</a></h3>
     <p></p>
 <br><br><br><br><br>
 

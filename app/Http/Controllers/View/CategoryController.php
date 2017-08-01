@@ -22,7 +22,7 @@ class CategoryController extends Controller
         $categories= Category::all();
         
         //根据分类id获取文章标题
-        $articles= Article::where('category_id',$category)->get();
+        $articles= Article::where('category_id',$category)->orderBy('created_at','desc')->get();
         //文章对应的标签
         foreach ($articles as $article){
             if($article->tag_id !=null && $article != ''){

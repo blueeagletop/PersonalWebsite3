@@ -11,7 +11,7 @@
     <br/>
     <h2><a href="article={{$ar->id}}">{{$ar->title}}</a></h2>
     <p><a style="color: #666" href="article={{$ar->id}}">&nbsp;&nbsp;>> 查看详情 </a></p>
-    <samp style="color: #666">{{$ar->created_at}}&nbsp;&nbsp;文章分类：{{$ar->category->title}}&nbsp;&nbsp;</samp>
+    <samp style="color: #666">{{$ar->created_at}}&nbsp;&nbsp;文章分类：{{$ar->category->name}}&nbsp;&nbsp;</samp>
         
         @if($ar->tag != null)
         <a class="tag">{{$ar->tag->name}}</a>&nbsp;&nbsp;

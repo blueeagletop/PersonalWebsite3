@@ -31,6 +31,8 @@ Route::group(['prefix'=>'admin'],function(){
     
     Route::get('article','Admin\ArticleController@article');
     Route::get('addArticle','Admin\ArticleController@addArticle');
+    Route::get('editArticle={article_id}','Admin\ArticleController@editArticle');
+    Route::get('articleDetail={article_id}','Admin\ArticleController@articleDetail');
     
     Route::get('category','Admin\CategoryController@category');
     Route::get('addCategory','Admin\CategoryController@addCategory');
@@ -46,6 +48,7 @@ Route::group(['prefix'=>'admin'],function(){
     /******* 操作数据库 *******/
     Route::group(['prefix'=>'service'],function(){
         Route::post('addArticle','Admin\ArticleController@doAddArticle');
+        Route::post('editArticle','Admin\ArticleController@doEditArticle');
         
         Route::post('addCategory','Admin\CategoryController@doAddCategory');
         Route::post('editCategory','Admin\CategoryController@doEditCategory');
