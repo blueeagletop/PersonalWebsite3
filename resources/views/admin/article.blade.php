@@ -107,7 +107,7 @@
             //此处请求后台程序，下方是成功后的前台处理……
             $.ajax({
                 type: 'post', // 提交方式 get/post
-                url: 'service/delNews', // 需要提交的 url
+                url: 'service/delArticle', // 需要提交的 url
                 dataType: 'json',
                 data: {
                     id: id,

@@ -8,32 +8,9 @@
     <form action="" method="post"  class="form form-horizontal" id="form-category-edit">
         {{ csrf_field() }}
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>分类名</label>
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>标签名</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" style="width: 50%" value="{{$category->name}}" placeholder="" name="name">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3">父类别</label>
-            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">
-                    <select class="select" name="parent_id" size="1">
-                        @if($category->parent != null)
-                        <option value="{{$category->parent->id}}">{{$category->parent->name}}</option>
-                        <option value="">无</option>
-                        @else
-                        <option value="">无</option>
-                        @endif
-                        @foreach($categories as $cate)
-                        <option value="{{$cate->id}}" >{{$cate->name}}</option>
-                        @endforeach
-                    </select>
-                </span> 
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>排序号：（从小到大）</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="number" class="input-text" style="width: 50%" value="{{$category->compositor}}" placeholder="" name="compositor">
+                <input type="text" class="input-text" style="width: 50%" value="{{$tag->name}}" placeholder="" name="name">
             </div>
         </div>
         <div class="row cl">
@@ -57,13 +34,11 @@
             // parent.layer.close(index);
             $('#form-category-edit').ajaxSubmit({
                 type: 'post', // 提交方式 get/post
-                url: 'service/editCategory', // 需要提交的 url
+                url: 'service/editTag', // 需要提交的 url
                 dataType: 'json',
                 data: {
-                    id:"{{$category->id}}",
+                    id:{{$tag->id}},
                     name: $('input[name=name]').val(),
-                    compositor: $('input[name=compositor]').val(),
-                    parent_id: $('select[name=parent_id] option:selected').val(),
 //            preview: ($('#preview_id').attr('src')!='images/icon-add.png'?$('#preview_id').attr('src'):''),
                     _token: "{{csrf_token()}}"
                 },

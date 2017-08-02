@@ -4,36 +4,59 @@
 
 @section('content')
 
+<?php
+$htmlData = $message->detail;
+if (!empty($_POST['editor'])) {
+    if (get_magic_quotes_gpc()) {
+        $htmlData = stripslashes($_POST['editor']);
+    } else {
+        $htmlData = $_POST['editor'];
+    }
+}
+?>
+
+<script charset="utf-8" src="/blueeagle/htdocs/public/admin/plugins/kindeditor/plugins/code/prettify.js"></script>
+<script>
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('textarea[name="editor"]', {
+            uploadJson: '/blueeagle/htdocs/public/admin/plugins/kindeditor/php/upload_json.php',
+            fileManagerJson: '/blueeagle/htdocs/public/admin/plugins/kindeditor/php/file_manager_json.php',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=editArticle]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=editArticle]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+</script>
+
 <article class="page-container">
     <form action="" method="post"  class="form form-horizontal" id="form-category-edit">
         {{ csrf_field() }}
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>分类名</label>
+            <label class="form-label col-xs-4 col-sm-3">留言标题：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" style="width: 50%" value="{{$category->name}}" placeholder="" name="name">
+                {{$message->title}}
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3">父类别</label>
-            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">
-                    <select class="select" name="parent_id" size="1">
-                        @if($category->parent != null)
-                        <option value="{{$category->parent->id}}">{{$category->parent->name}}</option>
-                        <option value="">无</option>
-                        @else
-                        <option value="">无</option>
-                        @endif
-                        @foreach($categories as $cate)
-                        <option value="{{$cate->id}}" >{{$cate->name}}</option>
-                        @endforeach
-                    </select>
-                </span> 
+            <label class="form-label col-xs-4 col-sm-3">留言者：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                {{$message->member_nickname}}
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>排序号：（从小到大）</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="number" class="input-text" style="width: 50%" value="{{$category->compositor}}" placeholder="" name="compositor">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>留言内容:</label>
+            <div class="formControls col-8">
+            <textarea name="editor" id="editor_id" style="width:100%;height:500px;"><?php echo htmlspecialchars($htmlData); ?></textarea>
             </div>
         </div>
         <div class="row cl">
@@ -57,13 +80,11 @@
             // parent.layer.close(index);
             $('#form-category-edit').ajaxSubmit({
                 type: 'post', // 提交方式 get/post
-                url: 'service/editCategory', // 需要提交的 url
+                url: 'service/editMessage', // 需要提交的 url
                 dataType: 'json',
                 data: {
-                    id:"{{$category->id}}",
-                    name: $('input[name=name]').val(),
-                    compositor: $('input[name=compositor]').val(),
-                    parent_id: $('select[name=parent_id] option:selected').val(),
+                    id:"{{$message->id}}",
+                    detail: editor.html(),
 //            preview: ($('#preview_id').attr('src')!='images/icon-add.png'?$('#preview_id').attr('src'):''),
                     _token: "{{csrf_token()}}"
                 },

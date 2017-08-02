@@ -65,15 +65,14 @@ class ArticleController extends Controller
         $article->top=$top;
         $article->status = $status;
         
-        $tags=Tag::where('name',$tag_name)->get();
-        if($tags == null){
+        $tag=Tag::where('name',$tag_name)->first();
+        if($tag == null){
             $newTag=new Tag;
             $newTag->name=$tag_name;
             $newTag->save();
+            $article->tag_id = $newTag->id;
         }else{
-            foreach($tags as $tag){
-                $article->tag_id = $tag->id;
-            }
+            $article->tag_id = $tag->id;
         }
         $article->save();
         
@@ -104,7 +103,7 @@ class ArticleController extends Controller
         $article->top=$top;
         $article->status = $status;
         
-        $tags=Tag::where('name',$tag_name)->get();
+        $tags=Tag::where('name',$tag_name)->first();
         if($tags == null){
             $newTag=new Tag;
             $newTag->name=$tag_name;
@@ -122,10 +121,25 @@ class ArticleController extends Controller
         
         $m3_result = new M3Result;
         $m3_result->status = 0;
-        $m3_result->message = '添加成功';
+        $m3_result->message = '修改成功';
 
         return $m3_result->toJson();
     }
     
+    public function doDelArticle(Request $request) {
+        $id=$request->input('id','');
+        
+        $article= Article::find($id);
+        $articleDetail= ArticleDetail::where('article_id',$article->id)->first();
+        
+        $article->delete();
+        $articleDetail->delete();
+        
+        $m3_result = new M3Result;
+        $m3_result->status = 0;
+        $m3_result->message = '成功删除';
+
+        return $m3_result->toJson();
+    }
     
 }
