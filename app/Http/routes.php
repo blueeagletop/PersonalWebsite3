@@ -73,6 +73,9 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('editComment','Admin\CommentController@doEditComment');
         Route::post('delComment','Admin\CommentController@doDelComment');
         
+        Route::post('editMessage','Admin\MessageController@doEditMessage');
+        Route::post('delMessage','Admin\MessageController@doDelMessage');
+        
         Route::post('addAdmin','Admin\AdminController@doAddAdmin');
         Route::post('editAdmin','Admin\AdminController@doEditAdmin');
         Route::post('delAdmin','Admin\AdminController@doDelAdmin');

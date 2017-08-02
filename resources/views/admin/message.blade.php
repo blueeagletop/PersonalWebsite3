@@ -21,6 +21,7 @@
                 <th width="350">内容</th>
                 <th width="50">留言者</th>
                 <th width="50">置顶序列</th>
+                <th width="50">留言时间</th>
                 <th width="20">操作</th>
             </tr>
         </thead>
@@ -39,6 +40,7 @@
                     <span class="label label-success radius">{{$mes->top}}</span>
                     @endif
                 </td>
+                <td>{{$mes->created_at}}</td>
                 <td class="td-manage">
                     <a title="编辑" href="javascript:;" onclick="editMessage('编辑留言', 'editMessage={{$mes->id}}', '1', '800', '500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i>编辑</a> <br>
                     <a title="删除" href="javascript:;" onclick='delMessage("{{mb_substr($mes->detail,0,15)}}...","{{$mes->id}}")' class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i>删除</a></td>

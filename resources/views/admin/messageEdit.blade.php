@@ -56,7 +56,13 @@ if (!empty($_POST['editor'])) {
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>留言内容:</label>
             <div class="formControls col-8">
-            <textarea name="editor" id="editor_id" style="width:100%;height:500px;"><?php echo htmlspecialchars($htmlData); ?></textarea>
+                <textarea name="editor" id="editor_id" style="width:100%;height:500px;"><?php echo htmlspecialchars($htmlData); ?></textarea>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">置顶顺序（从大到小）：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="number" class="input-text" value="{{$message->top}}" placeholder="" id="url" name="top">
             </div>
         </div>
         <div class="row cl">
@@ -83,8 +89,9 @@ if (!empty($_POST['editor'])) {
                 url: 'service/editMessage', // 需要提交的 url
                 dataType: 'json',
                 data: {
-                    id:"{{$message->id}}",
+                    id: "{{$message->id}}",
                     detail: editor.html(),
+                    top: $('input[name=top]').val(),
 //            preview: ($('#preview_id').attr('src')!='images/icon-add.png'?$('#preview_id').attr('src'):''),
                     _token: "{{csrf_token()}}"
                 },

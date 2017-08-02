@@ -20,6 +20,7 @@
                                 <th width="100">对应文章标题</th>
 				<th width="50">用户昵称</th>
 				<th width="350">内容</th>
+                                <th width="50">评论时间</th>
 				<th width="20">操作</th>
 			</tr>
 		</thead>
@@ -31,6 +32,7 @@
 				<td style="text-align: left">{{$com->article_title}}</td>
 				<td>{{$com->member_nickname}}</td>
                                 <td style="text-align: left">{{$com->detail}}</td>
+                                <td>{{$com->created_at}}</td>
 				<td class="td-manage">
                                     <a title="编辑" href="javascript:;" onclick="editComment('编辑分类','editComment={{$com->id}}','1','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i>编辑</a> <br>
                                     <a title="删除" href="javascript:;" onclick='delComment("{{mb_substr($com->detail,0,15)}}...","{{$com->id}}")' class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i>删除</a></td>
