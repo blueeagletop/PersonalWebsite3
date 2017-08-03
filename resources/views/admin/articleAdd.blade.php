@@ -47,6 +47,12 @@
             <textarea name="editor" id="editor_id" style="width:100%;height:500px"></textarea>
         </div>
     </div>
+    <div class="row cl">
+        <label class="form-label col-2">发表时间：</label>
+        <div class="formControls col-5">
+            <input type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" id="datemin" class="input-text Wdate" style="width:180px;" name="created_at">
+        </div>
+    </div>
 <!--    <div class="row cl">
         <label class="form-label col-3"><span class="c-red">*</span>是否发布：</label>
         <div class="formControls col-5 skin-minimal">
@@ -61,19 +67,6 @@
         </div>
         <div class="col-4"> </div>
     </div>-->
-    <!--        <div class="row cl">
-                <label class="form-label col-2"><span class="c-red">*</span>是否发布：</label>
-                <div class="formControls col-5 skin-minimal">
-                    <div class="radio-box">
-                        <input name="status" type="radio" id="1" checked>
-                        <label for="1">发布</label>
-                    </div>
-                    <div class="radio-box">
-                        <input type="radio" id="0" name="status">
-                        <label for="0">储存至草稿，暂不发布</label>
-                    </div>
-                </div>
-            </div>-->
 
     <div class="row cl">
         <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
@@ -85,6 +78,9 @@
 @endsection
 
 @section('my-js')
+
+<script type="text/javascript" src="../public/admin/lib/My97DatePicker/WdatePicker.js"></script> 
+
 <script type="text/javascript">
 
     $("#form-article-add").Validform({
@@ -100,11 +96,12 @@
                 dataType: 'json',
                 data: {
                     title: $('input[name=title]').val(),
-                    category_id: $('input[name=category_id]').val(),
+                    category_id: $('select[name=category_id] option:selected').val(),
                     top: $('input[name=top]').val(),
                     detail: editor.html(),
                     tag: $('input[name=tag]').val(),
                     status: '1',
+                    created_at: $('input[name=created_at]').val(),
                     _token: "{{csrf_token()}}"
                 },
                 success: function (data) {

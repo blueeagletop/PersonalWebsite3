@@ -58,12 +58,15 @@ class ArticleController extends Controller
         $top = $request->input('top', '');
         $status =$request->input('status','');
         $detail= $request->input('detail','');
+        $created_at=$request->input('created_at','');
         
         $article= new Article;
         $article->title=$title;
         $article->category_id=$category_id;
         $article->top=$top;
         $article->status = $status;
+        $article->created_at=$created_at;
+        $article->updated_at=date('Y-m-d H-i-s',time());
         
         $tag=Tag::where('name',$tag_name)->first();
         if($tag == null){
@@ -96,22 +99,24 @@ class ArticleController extends Controller
         $top = $request->input('top', '');
         $status =$request->input('status','');
         $detail= $request->input('detail','');
+        $created_at=$request->input('created_at','');
         
         $article= Article::find($id);
         $article->title=$title;
         $article->category_id=$category_id;
         $article->top=$top;
         $article->status = $status;
+        $article->created_at=$created_at;
+        $article->updated_at=date('Y-m-d H-i-s',time());
         
-        $tags=Tag::where('name',$tag_name)->first();
-        if($tags == null){
+        $tag=Tag::where('name',$tag_name)->first();
+        if($tag == null){
             $newTag=new Tag;
             $newTag->name=$tag_name;
             $newTag->save();
+            $article->tag_id = $newTag->id;
         }else{
-            foreach($tags as $tag){
-                $article->tag_id = $tag->id;
-            }
+            $article->tag_id = $tag->id;
         }
         $article->save();
         
@@ -121,10 +126,50 @@ class ArticleController extends Controller
         
         $m3_result = new M3Result;
         $m3_result->status = 0;
-        $m3_result->message = '修改成功';
+        $m3_result->message = '成功修改';
 
         return $m3_result->toJson();
     }
+    
+//    public function doEditArticle(Request $request){
+//        $id=$request->input('id','');
+//        $title = $request->input('title', '');
+//        $category_id = $request->input('category_id', '');
+//        $tag_name = $request->input('tag', '');
+//        $top = $request->input('top', '');
+//        $status =$request->input('status','');
+//        $detail= $request->input('detail','');
+////        $created_at=$request->input('created_at','');
+//        
+//        $article= Article::find($id);
+//        $article->title=$title;
+//        $article->category_id=$category_id;
+//        $article->top=$top;
+//        $article->status = $status;
+////        $article->created_at=$created_at;
+////        $article->updated_at=date('Y-m-d H-i-s',time());
+//        
+//        $tags=Tag::where('name',$tag_name)->first();
+//        if($tags == null){
+//            $newTag=new Tag;
+//            $newTag->name=$tag_name;
+//            $newTag->save();
+//            $article->tag_id = $newTag->id;
+//        }else{
+//            $article->tag_id = $tag->id;
+//        }
+//        $article->save();
+//        
+//        $articleDetail=ArticleDetail::where('article_id',$article->id)->first();
+//        $articleDetail->detail=$detail;
+//        $articleDetail->save();
+//        
+//        $m3_result = new M3Result;
+//        $m3_result->status = 0;
+//        $m3_result->message = '修改成功';
+//
+//        return $m3_result->toJson();
+//    }
     
     public function doDelArticle(Request $request) {
         $id=$request->input('id','');

@@ -36,7 +36,7 @@
             <dd>
                 <ul>
                     <li><a _href="member" data-title="用户列表" href="javascript:;">用户列表</a></li>
-                    <li><a _href="member/delete" data-title="被禁用户" href="javascript:;">被禁的用户</a></li>
+                    <li><a _href="banMember" data-title="小黑屋用户" href="javascript:;">小黑屋用户</a></li>
                 </ul>
             </dd>
         </dl>

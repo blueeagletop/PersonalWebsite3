@@ -48,8 +48,13 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('addTag','Admin\TagController@addTag');
     Route::get('editTag={tag_id}','Admin\TagController@editTag');
     
-    Route::get('member','Admin\IndexController@welcome');
-    Route::get('member/ban','Admin\IndexController@welcome');
+    Route::get('member','Admin\MemberController@memberList');
+    Route::get('addMember','Admin\MemberController@addMember');
+    Route::get('editMember={member_id}','Admin\MemberController@editMember');
+    Route::get('banMember','Admin\MemberController@banMemberList');
+    Route::get('addBanMember','Admin\MemberController@addBanMember');
+    Route::get('editBanMember={member_id}','Admin\MemberController@editBanMember');
+    
     
     Route::get('admin','Admin\AdminController@adminList');
     Route::get('addAdmin','Admin\AdminController@addAdmin');
@@ -75,6 +80,14 @@ Route::group(['prefix'=>'admin'],function(){
         
         Route::post('editMessage','Admin\MessageController@doEditMessage');
         Route::post('delMessage','Admin\MessageController@doDelMessage');
+        
+        Route::post('addMember','Admin\MemberController@doAddMember');
+        Route::post('editMember','Admin\MemberController@doEditMember');
+        Route::post('delMember','Admin\MemberController@doDelMember');
+        
+        Route::post('addBanMember','Admin\MemberController@doAddBanMember');
+        Route::post('editBanMember','Admin\MemberController@doEditBanMember');
+        Route::post('delBanMember','Admin\MemberController@doDelBanMember');
         
         Route::post('addAdmin','Admin\AdminController@doAddAdmin');
         Route::post('editAdmin','Admin\AdminController@doEditAdmin');

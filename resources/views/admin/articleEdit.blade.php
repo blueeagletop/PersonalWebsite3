@@ -38,7 +38,7 @@ if (!empty($_POST['editor'])) {
     });
 </script>
 
-<form action="" method="post" class="form form-horizontal" id="form-article-add" name="editArticle">
+<form action="" method="post" class="form form-horizontal" id="form-article-add" name="form-article-add">
     {{ csrf_field() }}
     <div class="row cl">
         <label class="form-label col-2">标题：</label>
@@ -76,6 +76,12 @@ if (!empty($_POST['editor'])) {
             <textarea name="editor" id="editor_id" style="width:100%;height:500px;"><?php echo htmlspecialchars($htmlData); ?></textarea>
         </div>
     </div>
+    <div class="row cl">
+        <label class="form-label col-2">发表时间：</label>
+        <div class="formControls col-5">
+            <input type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" id="datemin" class="input-text Wdate" style="width:180px;" name="created_at" value="{{$article->created_at}}">
+        </div>
+    </div>
     <!--    <div class="row cl">
             <label class="form-label col-3"><span class="c-red">*</span>是否发布：</label>
             <div class="formControls col-5 skin-minimal">
@@ -101,6 +107,9 @@ if (!empty($_POST['editor'])) {
 @endsection
 
 @section('my-js')
+
+<script type="text/javascript" src="../public/admin/lib/My97DatePicker/WdatePicker.js"></script> 
+
 <script type="text/javascript">
 
     $("#form-article-add").Validform({
@@ -117,11 +126,12 @@ if (!empty($_POST['editor'])) {
                 data: {
                     id: "{{$article->id}}",
                     title: $('input[name=title]').val(),
-                    category_id: $('input[name=category_id]').val(),
+                    category_id: $('select[name=category_id] option:selected').val(),
                     top: $('input[name=top]').val(),
                     detail: editor.html(),
                     tag: $('input[name=tag]').val(),
                     status: '1',
+                    created_at: $('input[name=created_at]').val(),
                     _token: "{{csrf_token()}}"
                 },
                 success: function (data) {

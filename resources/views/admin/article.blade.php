@@ -9,9 +9,9 @@
 <div class="pd-20">
     <div class="page-container">
         <div class="text-c"> 日期范围：
-            <input type="text" onfocus="WdatePicker({maxDate: '#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})" id="datemin" class="input-text Wdate" style="width:120px;">
+            <input type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})" id="datemin" class="input-text Wdate" style="width:120px;">
             -
-            <input type="text" onfocus="WdatePicker({minDate: '#F{$dp.$D(\'datemin\')}', maxDate: '%y-%M-%d'})" id="datemax" class="input-text Wdate" style="width:120px;">
+            <input type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'datemin\')}'})" id="datemax" class="input-text Wdate" style="width:120px;">
             <input type="text" class="input-text" style="width:250px" placeholder="输入关键词" id="" name="">
             <button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜文章</button>
         </div>
@@ -72,7 +72,7 @@
 
 @section('my-js')
 
-
+<script type="text/javascript" src="../public/admin/lib/My97DatePicker/WdatePicker.js"></script> 
 
 <script type="text/javascript">
     function addArticle(title, url) {
