@@ -22,7 +22,10 @@ class TagController extends Controller
         $categories= Category::all();
         
         //根据分类id获取文章标题
-        $articles= Article::where('tag_id',$tag_id)->orderBy('created_at','desc')->get();
+        $articles= Article::where([
+            'tag_id'=>$tag_id,
+            'status'=>'1'
+                ])->orderBy('created_at','desc')->get();
         //文章对应的标签
         foreach ($articles as $article){
             if($article->tag_id !=null && $article != ''){

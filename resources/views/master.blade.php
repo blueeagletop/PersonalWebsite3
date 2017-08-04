@@ -95,7 +95,7 @@
                     <div class="leftContent">
                         <h2>< 最新评论 ><samp> </samp></h2>
                         @foreach($comments as $com)
-                        <p class="line_height"><a href="{{$com->article_id}}"><b>{{$com->id}}：</b>{{$com->detail}}</a></p>
+                        <p class="line_height"><a href="article={{$com->article_id}}"><b>{{$com->id}}：</b>{{$com->detail}}</a></p>
                         @endforeach
                     </div>
                     <br>

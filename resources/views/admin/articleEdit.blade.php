@@ -82,20 +82,16 @@ if (!empty($_POST['editor'])) {
             <input type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" id="datemin" class="input-text Wdate" style="width:180px;" name="created_at" value="{{$article->created_at}}">
         </div>
     </div>
-    <!--    <div class="row cl">
-            <label class="form-label col-3"><span class="c-red">*</span>是否发布：</label>
-            <div class="formControls col-5 skin-minimal">
-                <div class="radio-box">
-                    <input type="radio" id="sex-1" name="sex" datatype="*" nullmsg="请选择状态！">
-                    <label for="sex-1">发布</label>
-                </div>
-                <div class="radio-box">
-                    <input type="radio" id="sex-2" name="sex">
-                    <label for="sex-2">存放草稿箱中</label>
-                </div>
-            </div>
-            <div class="col-4"> </div>
-        </div>-->
+    <div class="row cl">
+        <label class="form-label col-2">是否发布：</label>
+        <div class="formControls col-5"> <span class="select-box" style="width:150px;">
+                <select class="select" name="status" size="1">
+                    <option value="1" >发布</option>
+                    <option value="0" >草稿</option>
+                </select>
+            </span> 
+        </div>
+    </div>
 
     <div class="row cl">
         <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
@@ -130,7 +126,7 @@ if (!empty($_POST['editor'])) {
                     top: $('input[name=top]').val(),
                     detail: editor.html(),
                     tag: $('input[name=tag]').val(),
-                    status: '1',
+                    status: $('select[name=status] option:selected').val(),
                     created_at: $('input[name=created_at]').val(),
                     _token: "{{csrf_token()}}"
                 },

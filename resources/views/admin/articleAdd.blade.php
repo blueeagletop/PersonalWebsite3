@@ -53,6 +53,16 @@
             <input type="text" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" id="datemin" class="input-text Wdate" style="width:180px;" name="created_at">
         </div>
     </div>
+    <div class="row cl">
+        <label class="form-label col-2">是否发布：</label>
+        <div class="formControls col-5"> <span class="select-box" style="width:150px;">
+                <select class="select" name="status" size="1">
+                    <option value="1" >发布</option>
+                    <option value="0" >草稿</option>
+                </select>
+            </span> 
+        </div>
+    </div>
 <!--    <div class="row cl">
         <label class="form-label col-3"><span class="c-red">*</span>是否发布：</label>
         <div class="formControls col-5 skin-minimal">
@@ -100,7 +110,7 @@
                     top: $('input[name=top]').val(),
                     detail: editor.html(),
                     tag: $('input[name=tag]').val(),
-                    status: '1',
+                    status: $('select[name=status] option:selected').val(),
                     created_at: $('input[name=created_at]').val(),
                     _token: "{{csrf_token()}}"
                 },

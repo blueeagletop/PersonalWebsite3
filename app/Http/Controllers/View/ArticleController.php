@@ -13,10 +13,11 @@ use App\ORM\ArticleDetail;
 use App\ORM\Tag;
 use App\ORM\Comment;
 use App\ORM\Message;
+use App\ORM\Member;
 
 class ArticleController extends Controller
 {
-    public function detail($article_id){
+    public function articleDetail($article_id){
         //一级分类
         $categoriesFirst= Category::whereNull('parent_id')->get();
         //所有分类
@@ -37,6 +38,10 @@ class ArticleController extends Controller
         $categoryF= Category::where('id',$article->category->parent_id)->first();
         
         $articleDetail= ArticleDetail::where('article_id',$article_id)->first();
+        $articleComments= Comment::where('article_id',$article_id)->orderBy('created_at','desc')->get();
+        foreach ($articleComments as $comment) {
+            $comment->nickname= Member::find($comment->member_id)->nickname;
+        }
         
         $tags=Tag::all();
         $comments=Comment::all();
@@ -47,6 +52,7 @@ class ArticleController extends Controller
                 ->with('article',$article)
                 ->with('categoryF',$categoryF)
                 ->with('articleDetail',$articleDetail)
+                ->with('articleComments',$articleComments)
                 ->with('tags',$tags)
                 ->with('comments',$comments)
                 ->with('messages',$messages);

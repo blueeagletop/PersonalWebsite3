@@ -14,7 +14,7 @@
 Route::get('/', 'View\IndexController@index');
 Route::get('/category={category_id}', 'View\CategoryController@categoryArticle');
 Route::get('/categoryF={categoryF_id}', 'View\CategoryController@firstCategoryArticle');
-Route::get('/article={article_id}', 'View\ArticleController@detail');
+Route::get('/article={article_id}', 'View\ArticleController@articleDetail');
 Route::get('/tag={tag_id}', 'View\TagController@tagArticle');
 
 Route::group(['prefix'=>'service'],function(){
