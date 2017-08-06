@@ -1,0 +1,46 @@
+@charset "UTF-8";
+h1{
+    font-size: x-large;
+}
+h2{
+    font-size: large;
+}
+h3{
+    font-size: medium;
+}
+.choosed_title{
+    color: #0044cc;
+    border-bottom: 2px solid blue;
+    padding: 2px 4px;
+}
+.register{
+    height: 56px;
+    font-size: medium;
+}
+.register_input{
+    height: 26px;
+    width: 300px;
+}
+.validate_code{
+    height: 126px;
+    font-size: medium;
+}
+.validate_code_input{
+    height: 40px;
+    width: 300px;
+}
+.bottom_area{
+    position: absolute;
+    left:50%; 
+    transform:translate(-50%);
+    font-size: medium;
+    width: 50px;
+    height: 26px;
+    line-height: 26px;
+    color:#FFFFFF;
+    font-weight: bold;
+    background-color: #0066cc;
+    padding: 8px 30px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+}

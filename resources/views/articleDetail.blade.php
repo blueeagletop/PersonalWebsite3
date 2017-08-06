@@ -66,7 +66,8 @@
     </div>
     <div class="row cl">
         <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-            <br><input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;"><a>&nbsp;&nbsp;XXX，谢谢您的评论。</a><br><br>
+<!--            <br><input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;"><a>&nbsp;&nbsp;XXX，谢谢您的评论。</a><br><br>-->
+            <br>抱歉，您需要<a style="color: red" href="login"> < 登录 > </a>之后才能发表评论。点击<a style="color: red" href="login"> < 此处去登录页面 > </a><br><br>
         </div>
     </div>
 </form>

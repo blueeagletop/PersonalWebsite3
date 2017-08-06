@@ -16,12 +16,18 @@ Route::get('/category={category_id}', 'View\CategoryController@categoryArticle')
 Route::get('/categoryF={categoryF_id}', 'View\CategoryController@firstCategoryArticle');
 Route::get('/article={article_id}', 'View\ArticleController@articleDetail');
 Route::get('/tag={tag_id}', 'View\TagController@tagArticle');
+Route::get('/register','View\MemberController@register');
+Route::get('/login','View\MemberController@login');
 
 Route::group(['prefix'=>'service'],function(){
     Route::get('/validate_code/create','Service\ValidateController@create');
-    Route::get('category/parent_id/{parent_id}','Service\IndexController@getCategoryByParentId');
+    
+//    Route::get('category/parent_id/{parent_id}','Service\IndexController@getCategoryByParentId');
 });
 
+Route::group(['prefix'=>'member'],function(){
+    Route::get('/','Service\ValidateController@create');
+});
 
 /******************  后台管理  ******************/
 Route::group(['prefix'=>'admin'],function(){
