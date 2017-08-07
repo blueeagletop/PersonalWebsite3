@@ -1,11 +1,17 @@
 @charset "UTF-8";
+a:hover{
+    text-decoration: none;
+}
 h1{
+    font-weight: bold;
     font-size: x-large;
 }
 h2{
+    font-weight: bold;
     font-size: large;
 }
 h3{
+    font-weight: bold;
     font-size: medium;
 }
 .choosed_title{
@@ -18,7 +24,7 @@ h3{
     font-size: medium;
 }
 .register_input{
-    height: 26px;
+    height: 30px;
     width: 300px;
 }
 .validate_code{
@@ -43,4 +49,15 @@ h3{
     padding: 8px 30px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
+}
+
+.input-bootom{
+    font-size: medium;
+    width: 100px;
+    height: 40px;
+    color:#FFFFFF;
+    background-color: #0066cc;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border:none;
 }

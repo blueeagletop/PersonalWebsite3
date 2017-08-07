@@ -42,13 +42,13 @@
                     <!-- use captain icon for toggle menu -->
                     <div id="hamburgermenu">
                         <ul>
-                            <li><a href="http://www.blueeagle.top">首页</a></li>
+                            <li><a href="./">首页</a></li>
                             <li><a href="./"><img src="public/img/boke.png" style="width: 30px;"><br/>博客</a></li>
                             <li><a href="https://github.com/blueeagletop" target="_black"><img src="public/img/GitHub.png" style="width: 30px"><br/>GitHub</a></li>
-                            <li><a href="../message/"><img src="public/img/sociality.png" style="width: 30px"><br/>社交</a></li>
-                            <li><a href="../message/"><img src="public/img/message.png" style="width: 30px"><br/>留言</a></li>
+<!--                            <li><a href="./sociality"><img src="public/img/sociality.png" style="width: 30px"><br/>社交</a></li>-->
+                            <li><a href="./message"><img src="public/img/message.png" style="width: 30px"><br/>留言</a></li>
                         </ul>
-                        <div class="hamburgermenuText"><a href="#">访客中心</a></div>
+                        <div class="hamburgermenuText"><a href="member/index">访客中心</a></div>
                     </div>
                 </div>
                 <div class="overlay"></div>

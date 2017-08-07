@@ -9,10 +9,6 @@ use App\Http\Controllers\Controller;
 
 use App\ORM\Category;
 
-class IndexController extends Controller
-{
-//    public function getCategoryByParentId($parent_id){
-//        $categories= Category::where('parent_id',$parent_id)->get();
-//        return $categories;
-//    }
+class IndexController extends Controller{
+
 }
