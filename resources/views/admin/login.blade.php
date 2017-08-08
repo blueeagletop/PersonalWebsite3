@@ -81,9 +81,9 @@
             }
 
             layer.msg(data.message, {icon:1, time:2000});
-            parent.location.reload();
+//            parent.location.reload();
             
-            location.href = "index";             
+            window.location.href = "index";             
           },
           error: function(xhr, status, error) {
             console.log(xhr);

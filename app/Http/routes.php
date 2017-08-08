@@ -44,13 +44,24 @@ Route::group(['middleware' => 'check.login'], function() {
     });
 });
 
+//移动端
+Route::group(['prefix' => 'mobile'], function() {
+    Route::get('index', 'Mobile\ArticleController@articleList');
+    Route::get('category={category_id}', 'Mobile\ArticleController@categoryArticle');
+    Route::get('article={article_id}', 'Mobile\ArticleController@articleDetail');
+    Route::get('message', 'Mobile\MessageController@messageList');
+    
+    Route::get('member', 'Mobile\MemberController@index');
+});
+
+
+/* * ****************  后台管理  ***************** */
 Route::group(['prefix' => 'admin'], function() {
     Route::get('login', 'Admin\LoginController@toLogin');
     Route::post('doLogin', 'Admin\LoginController@doLogin');
     Route::get('logout', 'Admin\LoginController@logout');
 });
 
-/* * ****************  后台管理  ***************** */
 Route::group(['middleware' => 'check.admin.login'], function() {
     Route::group(['prefix' => 'admin'], function() {
         Route::get('index', 'Admin\IndexController@index');

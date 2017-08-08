@@ -1,0 +1,18 @@
+@charset "UTF-8";
+a{
+    color: #000;
+    text-decoration: none;
+}
+p{
+    line-height: 1.5;
+}
+.page{
+    position: absolute;
+    width: 94%;
+    left:50%; 
+    transform:translate(-50%);
+}
+.content{
+    width: 100%;
+    text-align: left;
+}

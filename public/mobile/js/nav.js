@@ -1,20 +1,19 @@
 $(function () {
 
-    var left = $('.left');
-    var right = $('.right');
-    var down = $('.down');
-    var up = $('.up');
+    var nav1 = $('.nav1');
+    var nav2 = $('.nav2');
+    var nav3 = $('.nav3');
+    var nav4 = $('.nav4');
     var bg = $('.bgDiv');
-    var leftNav = $('.leftNav');
-    var rightNav = $('.rightNav');
-    var downNav = $('.downNav');
-    var upNav = $('.upNav');
+    var firstNav1 = $('.firstNav1');
+    var firstNav2 = $('.firstNav2');
+    var firstNav3 = $('.firstNav3');
+    var firstNav4 = $('.firstNav4');
 
-    showNav(left, leftNav, "left");
-    showNav(right, rightNav, "right");
-    showNav(up, upNav, "up");
-    showNav(down, downNav, "down");
-
+    showNav(nav1, firstNav1, "nav1");
+    showNav(nav2, firstNav2, "nav2");
+    showNav(nav3, firstNav3, "nav3");
+    showNav(nav4, firstNav4, "nav4");
 
     function showNav(btn, navDiv, direction) {
         btn.on('click', function () {
@@ -22,37 +21,61 @@ $(function () {
                 display: "block",
                 transition: "opacity .5s"
             });
-            if (direction == "right") {
-                navDiv.css({
-                    right: "0px",
-                    transition: "right 1s"
-                });
-            } else if (direction == "left") {
+            if (direction == "nav1") {
                 navDiv.css({
                     left: "0px",
-                    transition: "left 1s"
+                    transition: "nav1 1s"
                 });
-            } else if (direction == "up") {
+            } else if (direction == "nav2") {
                 navDiv.css({
-                    top: "0px",
-                    transition: "top 1s"
+                    left: "25%",
+                    transition: "nav2 1s"
                 });
-            } else if (direction == "down") {
-                navDiv.css({
-                    bottom: "0px",
-                    transition: "bottom 1s"
-                });
+            } else if (direction == "nav3") {
+                location.href = "message";
+//                navDiv.css({
+//                    left: "0px",
+//                    transition: "nav3 1s"
+//                });
+            } else if (direction == "nav4") {
+                location.href = "member";
+//                navDiv.css({
+//                    right: "0px",
+//                    transition: "nav4 1s"
+//                });
             }
 
 
         });
     }
 
-    $('span').each(function () {
+//点击跳转页面
+    $('#home').each(function () {
         var dom = $(this);
         dom.on('click', function () {
             hideNav();
-            alert(dom.text())
+            location.href= "./index";
+        });
+    });
+    $('#article').each(function () {
+        var dom = $(this);
+        dom.on('click', function () {
+            hideNav();
+            location.href= "./index";
+        });
+    });
+    $('#message').each(function () {
+        var dom = $(this);
+        dom.on('click', function () {
+            hideNav();
+            location.href= "./message";
+        });
+    });
+    $('#github').each(function () {
+        var dom = $(this);
+        dom.on('click', function () {
+            hideNav();
+            location.href= "http://www.github.com/blueeagletop";
         });
     });
 
@@ -62,24 +85,21 @@ $(function () {
     });
 
     function hideNav() {
-        leftNav.css({
-            left: "-50%",
+        firstNav1.css({
+            left: "-100%",
             transition: "left .5s"
         });
-        rightNav.css({
-            right: "-50%",
-            transition: "right .5s"
+        firstNav2.css({
+            left: "-100%",
+            transition: "left .5s"
         });
-        upNav.css({
-            top: "-40%",
-            transition: "top .5s"
+        firstNav3.css({
+            left: "-100%",
+            transition: "left .5s"
         });
-        downNav.css({
-            bottom: "-50%",
-            webkitTransition:"bottom .5s",
-            oTransition:"bottom .5s",
-            mozTransition:"bottom .5s",
-            transition: "bottom .5s"
+        firstNav4.css({
+            left: "-100%",
+            transition: "left .5s"
         });
         bg.css({
             display: "none",
