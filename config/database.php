@@ -55,11 +55,19 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => 'localhost',  /* 数据库连接地址 */
+            
+//            'host' => 'localhost',  /* 数据库连接地址 */
+//            'port' => '3306', /* 数据库连接端口 */
+//            'database' => 'blueeagle', /* 数据库名 */
+//            'username' => 'root', /* 数据库用户名 */
+//            'password' => 'fly516888', /* 数据库用户密码 */
+            
+            'host' => 'xdm294501262.my3w.com',  /* 数据库连接地址 */
             'port' => '3306', /* 数据库连接端口 */
-            'database' => 'blueeagle', /* 数据库名 */
-            'username' => 'root', /* 数据库用户名 */
-            'password' => 'fly516888', /* 数据库用户密码 */
+            'database' => 'xdm294501262_db', /* 数据库名 */
+            'username' => 'xdm294501262', /* 数据库用户名 */
+            'password' => 'mysql940110zhuimeng', /* 数据库用户密码 */
+            
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',

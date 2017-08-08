@@ -14,9 +14,43 @@ use App\ORM\Message;
 use App\ORM\Member;
 
 class ArticleController extends Controller {
+    public function searchArticle($keyword) {
+        //一级分类
+        $categoriesFirst= Category::whereNull('parent_id')->get();
+        //所有分类
+        $categories= Category::all();
+        
+        //根据关键词获取文章标题
+        $articles= Article::where('title','like','%'.$keyword.'%')->orderBy('created_at','desc')->get();
+        //文章对应的标签
+        foreach ($articles as $article){
+            if($article->tag_id !=null && $article != ''){
+                $article->tag = Tag::find($article->tag_id);
+            }
+            $article->category = Category::find($article->category_id)->name;
+        }
+        
+        $tags=Tag::all();
+        
+        $comments = Comment::where('id','>',0)->orderBy('created_at', 'desc')->paginate(5);
+        foreach ($comments as $comment){
+            $comment->nickname = Member::find($comment->member_id)->nickname;
+        }
+        $messages = Message::where('id','>',0)->orderBy('created_at', 'desc')->paginate(5);
+        foreach ($messages as $message){
+            $message->nickname = Member::find($message->member_id)->nickname;
+        }
 
+        return view('searchArticle')->with('categoriesFirst',$categoriesFirst)
+                ->with('categories',$categories)
+                ->with('keyword',$keyword)
+                ->with('articles',$articles)
+                ->with('tags',$tags)
+                ->with('comments',$comments)
+                ->with('messages',$messages);
+    }
+    
     public function articleDetail($article_id) {
-
         
         //一级分类
         $categoriesFirst = Category::whereNull('parent_id')->get();
@@ -44,8 +78,14 @@ class ArticleController extends Controller {
         }
 
         $tags = Tag::all();
-        $comments = Comment::all();
-        $messages = Message::all();
+        $comments = Comment::where('id','>',0)->orderBy('created_at', 'desc')->paginate(5);
+        foreach ($comments as $comment){
+            $comment->nickname = Member::find($comment->member_id)->nickname;
+        }
+        $messages = Message::where('id','>',0)->orderBy('created_at', 'desc')->paginate(5);
+        foreach ($messages as $message){
+            $message->nickname = Member::find($message->member_id)->nickname;
+        }
         
         //取session已登录的访客信息
         $member = session()->get('member', '');

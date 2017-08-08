@@ -52,7 +52,7 @@
             <div style="line-height: 70px"><img src="service/validate_code/create" class="bk_validate_code"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         </div>
 
-        <div class="weui_cells_tips">我已阅读并同意<a style="color: blue" href="">《BlueEagle.top注册协议》</a></div><br><br>
+        <div class="weui_cells_tips"><input name="Fruit" type="checkbox" value="" checked="checked"/> 我已阅读并同意<a style="color: blue" href="registerNotice">《BlueEagle.top注册须知》</a></div><br><br>
         <div class="register">
             <div style="position:absolute; left:50%; transform:translate(-50%);">
                 <input class="input-bootom" type="submit" value="&nbsp;注&nbsp;&nbsp;册&nbsp;">
@@ -104,12 +104,14 @@
 
                     layer.msg(data.message, {icon: 1, time: 2000});
                     parent.location.reload();
+                    
+                    location.href = "member/index";  
                 },
                 error: function (xhr, status, error) {
                     console.log(xhr);
                     console.log(status);
                     console.log(error);
-                    layer.msg('ajax error', {icon: 2, time: 2000});
+                    layer.msg('注册成功，但邮件发送失败，请登录后重新验证邮箱', {icon: 2, time: 2000});
                 },
                 beforeSend: function (xhr) {
                     layer.load(0, {shade: false});

@@ -12,6 +12,7 @@ use App\ORM\Article;
 use App\ORM\Tag;
 use App\ORM\Comment;
 use App\ORM\Message;
+use App\ORM\Member;
 
 class TagController extends Controller
 {
@@ -39,9 +40,14 @@ class TagController extends Controller
         
         $tags=Tag::all();
         
-        $comments=Comment::all();
-        
-        $messages=Message::all();
+        $comments = Comment::where('id','>',0)->orderBy('created_at', 'desc')->paginate(5);
+        foreach ($comments as $comment){
+            $comment->nickname = Member::find($comment->member_id)->nickname;
+        }
+        $messages = Message::where('id','>',0)->orderBy('created_at', 'desc')->paginate(5);
+        foreach ($messages as $message){
+            $message->nickname = Member::find($message->member_id)->nickname;
+        }
         
         return view('tagArticle')->with('categoriesFirst',$categoriesFirst)
                 ->with('categories',$categories)

@@ -28,5 +28,7 @@ class MemberController extends Controller
                 ->with('comments',$comments)
                 ->with('messages',$messages);
     }
-    
+    public function registerNotice() {
+        return view('registerNotice');
+    }
 }

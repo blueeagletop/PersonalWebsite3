@@ -8,14 +8,14 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\M3Result;
-use App\ORM\Comment;
+use App\ORM\Message;
 
-class CommentController extends Controller
+class MessageController extends Controller
 {
-    public function addComment(Request $request) {
-        $article_id = $request->input('article_id','');
-        $detail = $request->input('detail','');
-        $validate_code = $request->input('validate_code','');
+    public function addMessage(Request $request) {
+        $validate_code=$request->input('validate_code','');
+        $title=$request->input('title','');
+        $detail=$request->input('detail','');
         
         //验证码
         $validate_code_session = $request->session()->get('validate_code');
@@ -29,15 +29,15 @@ class CommentController extends Controller
         //取session已登录的访客信息
         $member = session()->get('member', '');
         
-        $comment=new Comment;
-        $comment->member_id=$member->id;
-        $comment->article_id=$article_id;
-        $comment->detail=$detail;
-        $comment->save();
+        $message=new Message;
+        $message->member_id=$member->id;
+        $message->title=$title;
+        $message->detail=$detail;
+        $message->save();
         
         $m3_result = new M3Result;
         $m3_result->status = 0;
-        $m3_result->message = '成功评论';
+        $m3_result->message = '留言成功';
 
         return $m3_result->toJson();
     }

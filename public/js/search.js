@@ -21,7 +21,7 @@
 		}
 		else{
                     key = value;
-                    location.href='./index.php?keywords='+key;
+                    location.href='./keyword='+key;
 		}
 		evt.preventDefault();
 	}

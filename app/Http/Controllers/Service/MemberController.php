@@ -86,13 +86,15 @@ class MemberController extends Controller {
         $member->status = 2;
         $member->save();
         
+        $request->session()->put('member',$member);
+        
         $uuid = UUID::create();
 
         $m3_email = new M3Email;
         $m3_email->to = $email;
         $m3_email->cc = 'blueeaglefly@163.com';
         $m3_email->subject = '【BlueEagle.top】邮箱验证';
-        $m3_email->content = '请于1小时点击该链接完成验证. http://localhost/blueeagle/htdocs/service/validate_email'
+        $m3_email->content = '请于1小时点击该链接完成验证. http://www.blueeagle.top/service/validate_email'
                 . '?member_id=' . $member->id
                 . '&code=' . $uuid;
         $validateEmail = ValidateEmail::where('member_id', $member->id)->first();
@@ -153,5 +155,10 @@ class MemberController extends Controller {
     $m3_result->status=0;
     $m3_result->message="登录成功";
     return $m3_result->toJson();
+    }
+    
+    public function logout(){
+        session()->put('member',null);
+        return view('login');
     }
 }

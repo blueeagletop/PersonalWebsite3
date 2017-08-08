@@ -43,7 +43,7 @@
                     <div id="hamburgermenu">
                         <ul>
                             <li><a href="./">首页</a></li>
-                            <li><a href="./"><img src="public/img/boke.png" style="width: 30px;"><br/>博客</a></li>
+                            <li><a href="./"><img src="public/img/boke.png" style="width: 30px;"><br/>文章</a></li>
                             <li><a href="https://github.com/blueeagletop" target="_black"><img src="public/img/GitHub.png" style="width: 30px"><br/>GitHub</a></li>
 <!--                            <li><a href="./sociality"><img src="public/img/sociality.png" style="width: 30px"><br/>社交</a></li>-->
                             <li><a href="./message"><img src="public/img/message.png" style="width: 30px"><br/>留言</a></li>
@@ -62,14 +62,13 @@
                     <img src="public/img/portrait.png" style="width: 100px;right: 0px">
                     <div class="leftHeader"><h1>蓝鹰 BlueEagle</h1>正努力成为全栈工程师的PHP程序员。人生格言：生命不息，追梦不止。</div>
                     <div class="rightHeader">
-                        <p><a style="color: red;font-weight: bold;"> 中 文 </a> | <a style="color: #666"> English </a></p>
-                        <p><a>收藏本站</a></p>
+<!--                        <p><a style="color: red;font-weight: bold;"> 中 文 </a> | <a style="color: #666"> English </a></p>-->
+                        <p><a href="http://www.blueeaglefly.com">旧版入口</a></p>
                     </div>
                 </div>
                 <div id="content">
                     <div class="leftContent" id="leftContent">
                         <h2>< 文章分类 ></h2>
-                        
                         @foreach($categoriesFirst as $CF)
                         <dl>
                             <dt><h3><a href="#">{{$CF->name}}</a></h3></dt>
@@ -95,14 +94,14 @@
                     <div class="leftContent">
                         <h2>< 最新评论 ><samp> </samp></h2>
                         @foreach($comments as $com)
-                        <p class="line_height"><a href="article={{$com->article_id}}"><b>{{$com->id}}：</b>{{$com->detail}}</a></p>
+                        <p class="line_height"><a href="article={{$com->article_id}}"><b>{{$com->nickname}}：</b>{!! mb_substr($com->detail,0,26) !!}......</a></p>
                         @endforeach
                     </div>
                     <br>
                     <div class="leftContent">
                         <h2>< 最近留言 ></h2>
                         @foreach($messages as $mes)
-                        <p class="line_height"><b>{{$mes->id}}：</b>{{$mes->detail}}</p>
+                        <p class="line_height"><b>{{$mes->nickname}}：</b>{!! mb_substr($mes->detail,0,26) !!}......</p>
                         @endforeach
                         <a style="color: #666" href="message"> >>查看全部 </a>
                         <br><br>
@@ -112,8 +111,6 @@
                 </div>
             </div>
         </div>
-
-
         
 <script type="text/javascript">//文章分类导航栏特效
     $(function() {

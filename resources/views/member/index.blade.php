@@ -35,35 +35,36 @@
             </header>
             <div class="page">
                 <div class="bokeHeader">
-                    <div class="leftHeader" style="left: 20px;top: 10px;"><h1>欢迎您：{{$member->nickname}}</h1></div>
+                    <div class="leftHeader" style="left: 20px;top: 10px;"><h1>欢迎您：{{$member->nickname}} <a href="../logout" style="font-size:small;font-weight: normal;color: #666;">点击退出登录</a></h1></div>
                 </div>
                 <div id="content">
                     <h2>您的称呼：{{$member->nickname}}</h2>
                     <h2>您的用户名：{{$member->username}}</h2>
                     <h2>
-                    您的邮箱：{{$member->email}}
-                    @if($member->status == 2)
-                    <a style="color: red;font-size: small">×邮箱未验证</a>
-                    @else
-                    <a style="color: green;font-size: small">√ 邮箱已验证</a>
-                    @endif
+                        您的邮箱：{{$member->email}}
+                        @if($member->status == 2)
+                        <a style="color: red;font-size: small">×邮箱未验证</a>
+                        @else
+                        <a style="color: green;font-size: small">√ 邮箱已验证</a>
+                        @endif
                     </h2>
                     <h2>您的QQ：{{$member->qq}}</h2>
                     <h2>您的微信：{{$member->weixin}}</h2>
                     <a href="#">完善您的信息，博主将更容易与你联系和交流</a>
-                    
+
                     <hr>
                     <h3>以下是您的评论&nbsp;&nbsp;&nbsp;&nbsp;总< {{count($comments)}} >条评论</h3>
                     <br>
                     @foreach($comments as $comment)
-                    $comment->detail
+                    <p>{!! $comment->detail !!}</p>
                     <br>
                     @endforeach
                     <hr>
                     <h3>以下是您的留言&nbsp;&nbsp;&nbsp;&nbsp;总< {{count($messages)}} >条评论</h3>
                     <br>
-                    @foreach($comments as $comment)
-                    $comment->detail
+                    @foreach($messages as $message)
+                    <h3>{{$message->title}}</h3>
+                    <p>{!! $message->detail !!}</p>
                     <br>
                     @endforeach
                     <hr>

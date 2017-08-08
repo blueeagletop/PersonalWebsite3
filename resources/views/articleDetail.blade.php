@@ -131,7 +131,7 @@
                 url: 'service/addComment', // 需要提交的 url
                 dataType: 'json',
                 data: {
-                    member_id: "{{$member->id}}",
+                    member: "{{$member}}",
                     article_id: "{{$article->id}}",
                     detail: editor.html(),
                     validate_code: $('input[name=validate_code]').val(),

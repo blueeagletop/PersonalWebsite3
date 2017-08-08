@@ -26,12 +26,16 @@
     }
 </style> 
 
-<div class="presentLocation"><p>&nbsp;当前位置&nbsp;：&nbsp;<a href="./">全部文章</a>&nbsp;>>&nbsp;全部留言&nbsp;</p></div>
+<div class="presentLocation"><p>&nbsp;当前位置&nbsp;：&nbsp;全部留言&nbsp;</p></div>
 <div class="article">
 
     @foreach($allMessages as $message)
     <br>
-    <h2>{{$message->title}}</h2>
+    <h2>{{$message->title}} 
+    @if($message->top > 0)
+    <a style="color:red;font-weight:normal">[置顶]</a>
+    @endif
+    </h2>
     <samp style="color: #666">{{$message->nickname}}
         @if($message->nickname == 'BlueEagle')
         <a style="color: red">[ Blogger ]</a>
@@ -41,16 +45,22 @@
         <a style="color: red">[ 访客 ]</a>
         @endif
         &nbsp;{{$message->created_at}}</samp>
-    <p>{{$message->detail}}</p>
+    <p>{!! $message->detail !!}</p>
     <br><hr/>
     @endforeach
 
     <br>
     <form action="" method="post" class="form form-horizontal" id="form-message-add">
+        {{ csrf_field() }}
+        <div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span></label>
+		<div class="formControls col-xs-8 col-sm-9">
+                    留言标题：<input type="text" class="input-text" style="width: 70%;height: 24px" value="" placeholder="" name="title">
+		</div>
+	</div>
         <div class="row cl">
             <label class="form-label col-2">
-                <h3>留言<a style="color:#C00;">（请勿发广告或人身攻击，一经发现将被永久禁言）</a></h3>
-
+                <h3>留言内容<a style="color:#C00;">（请勿发广告或人身攻击，一经发现将被永久禁言）</a></h3>
             </label>
             <div class="formControls col-8">
                 <textarea name="editor" id="editor_id" style="width:100%;height:200px"  placeholder="您可以在这里发表评论"></textarea>
@@ -89,53 +99,60 @@
     });
 </script>
 
+<script type="text/javascript" src="/blueeagle/htdocs/public/admin/lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="/blueeagle/htdocs/public/admin/js/jquery.form.js"></script>
+<script type="text/javascript" src="/blueeagle/htdocs/public/admin/js/uploadFile.js"></script>
+<script type="text/javascript" src="/blueeagle/htdocs/public/admin/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="/blueeagle/htdocs/public/admin/js/H-ui.js"></script>
+<script type="text/javascript" src="/blueeagle/htdocs/public/admin/js/H-ui.admin.js"></script>
+<script type="text/javascript" src="/blueeagle/htdocs/public/admin/lib/Validform/5.3.2/Validform.min.js"></script>
 
 <script type="text/javascript">
-  $("#form-message-add").Validform({
-    tiptype:2,
-    callback:function(form){
-      // form[0].submit();
-      // var index = parent.layer.getFrameIndex(window.name);
-      // parent.$('.btn-refresh').click();
-      // parent.layer.close(index);
-      $('#form-message-add').ajaxSubmit({
-          type: 'post', // 提交方式 get/post
-          url: 'service/addMessage', // 需要提交的 url
-          dataType: 'json',
-          data: {
-            detail: editor.html(),
-            validate_code: $('input[name=validate_code]').val(),
-            _token: "{{csrf_token()}}"
-          },
-          success: function(data) {
-            if(data == null) {
-              layer.msg('服务端错误', {icon:2, time:2000});
-              return;
-            }
-            if(data.status != 0) {
-              layer.msg(data.message, {icon:2, time:2000});
-              return;
-            }
+    $("#form-message-add").Validform({
+        tiptype: 2,
+        callback: function (form) {
+            // form[0].submit();
+            // var index = parent.layer.getFrameIndex(window.name);
+            // parent.$('.btn-refresh').click();
+            // parent.layer.close(index);
+            $('#form-message-add').ajaxSubmit({
+                type: 'post', // 提交方式 get/post
+                url: 'service/addMessage', // 需要提交的 url
+                dataType: 'json',
+                data: {
+                    title: $('input[name=title]').val(),
+                    detail: editor.html(),
+                    validate_code: $('input[name=validate_code]').val(),
+                    _token: "{{csrf_token()}}"
+                },
+                success: function (data) {
+                    if (data == null) {
+                        layer.msg('服务端错误', {icon: 2, time: 2000});
+                        return;
+                    }
+                    if (data.status != 0) {
+                        layer.msg(data.message, {icon: 2, time: 2000});
+                        return;
+                    }
 
-            layer.msg(data.message, {icon:1, time:2000});
-            parent.location.reload();
-            
-            location.href = "member/index";             
-          },
-          error: function(xhr, status, error) {
-            console.log(xhr);
-            console.log(status);
-            console.log(error);
-            layer.msg('ajax error', {icon:2, time:2000});
-          },
-          beforeSend: function(xhr){
-            layer.load(0, {shade: false});
-          },
-        });
-        return false;
-    }
-  });
+                    layer.msg(data.message, {icon: 1, time: 2000});
+                    parent.location.reload();
+
+                    location.href = "";
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(error);
+                    layer.msg('ajax error', {icon: 2, time: 2000});
+                },
+                beforeSend: function (xhr) {
+                    layer.load(0, {shade: false});
+                },
+            });
+            return false;
+        }
+    });
 </script>
 
 @endsection 

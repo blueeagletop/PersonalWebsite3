@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title','BlueEagle.top访客注册')
+@section('title','BlueEagle.top访客登录')
 
 @section('content')
 
