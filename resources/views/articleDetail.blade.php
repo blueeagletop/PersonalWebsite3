@@ -12,13 +12,13 @@
     });
 </script>
 
-<script type="text/javascript" src="/blueeagle/htdocs/public/admin/lib/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="/blueeagle/htdocs/public/admin/js/jquery.form.js"></script>
-<script type="text/javascript" src="/blueeagle/htdocs/public/admin/js/uploadFile.js"></script>
-<script type="text/javascript" src="/blueeagle/htdocs/public/admin/lib/layer/2.1/layer.js"></script>
-<script type="text/javascript" src="/blueeagle/htdocs/public/admin/js/H-ui.js"></script>
-<script type="text/javascript" src="/blueeagle/htdocs/public/admin/js/H-ui.admin.js"></script>
-<script type="text/javascript" src="/blueeagle/htdocs/public/admin/lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="public/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="public/admin/js/jquery.form.js"></script>
+<script type="text/javascript" src="public/admin/js/uploadFile.js"></script>
+<script type="text/javascript" src="public/admin/lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="public/admin/js/H-ui.js"></script>
+<script type="text/javascript" src="public/admin/js/H-ui.admin.js"></script>
+<script type="text/javascript" src="public/admin/lib/Validform/5.3.2/Validform.min.js"></script>
 
 <style type="text/css"> 
     .input-submit{
