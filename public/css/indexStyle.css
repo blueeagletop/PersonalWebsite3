@@ -178,10 +178,10 @@ img { border: 0; max-width: 100%; }
     text-align: left;
 }
 .leftHeader{
-position: relative;
+position: absolute;
 width: 860px;
-left:114px;
-top: -116px;
+left:118px;
+top: 0px;
 font-size: large;
 font-weight: bold;
 /*line-height: 24px;*/
