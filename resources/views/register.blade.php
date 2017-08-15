@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('admin.masterOut')
 
 @section('title','BlueEagle.top访客注册')
 
@@ -111,7 +111,9 @@
                     console.log(xhr);
                     console.log(status);
                     console.log(error);
-                    layer.msg('注册成功，但邮件发送失败，请登录后重新验证邮箱', {icon: 2, time: 2000});
+                    layer.msg('注册成功，但发送邮件至注册邮箱失败。', {icon: 2, time: 9000});
+                    
+                    location.href = "member/index";  
                 },
                 beforeSend: function (xhr) {
                     layer.load(0, {shade: false});

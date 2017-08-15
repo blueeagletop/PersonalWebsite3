@@ -107,7 +107,6 @@ class MemberController extends Controller {
         $validateEmail->save();
 
         Mail::send('email_register', ['m3_email' => $m3_email], function ($m) use ($m3_email) {
-            // $m->from('hello@app.com', 'Your Application');
             $m->to($m3_email->to, '尊敬的用户')
                     ->cc($m3_email->cc)
                     ->subject($m3_email->subject);

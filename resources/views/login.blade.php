@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('admin.masterOut')
 
 @section('title','BlueEagle.top访客登录')
 

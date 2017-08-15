@@ -64,6 +64,7 @@ if (isMobile()) {
     <hr/>
     @endforeach
 
+    <div class=".paginate">{!! $articles->links() !!}</div>
 
     <br><br><br><br><br>
 

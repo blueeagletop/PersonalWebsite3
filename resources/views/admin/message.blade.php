@@ -21,8 +21,8 @@
                 <th width="350">内容</th>
                 <th width="50">留言者</th>
                 <th width="50">置顶序列</th>
-                <th width="50">留言时间</th>
-                <th width="20">操作</th>
+                <th width="60">留言时间</th>
+                <th width="40">操作</th>
             </tr>
         </thead>
         <tbody>

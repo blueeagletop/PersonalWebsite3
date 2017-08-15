@@ -26,7 +26,7 @@ class TagController extends Controller
         $articles= Article::where([
             'tag_id'=>$tag_id,
             'status'=>'1'
-                ])->orderBy('created_at','desc')->get();
+                ])->orderBy('created_at','desc')->paginate(10);
         //文章对应的标签
         foreach ($articles as $article){
             if($article->tag_id !=null && $article != ''){

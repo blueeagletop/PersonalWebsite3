@@ -46,12 +46,12 @@
 
     <p>
         @if($articleDetail->source == null)
-    <li>作者：蓝鹰 BlueEagle</li>
-    <li>本文地址：http://www.blueeagle.top/article={{$article->id}}</li>
-    <li>转载请注明出处</li>
+    <ul style="line-height:1.5">作者：蓝鹰 BlueEagle</ul>
+    <ul style="line-height:1.5">本文地址：http://www.blueeagle.top/article={{$article->id}}</ul>
+    <ul style="line-height:1.5">转载请注明出处</ul>
     @else
-    <li>本文地址：http://www.blueeagle.top/article={{$article->id}}</li>
-    <li>文章转自：{{$articleDetail->source}}</li>
+    <ul style="line-height:1.5">本文地址：http://www.blueeagle.top/article={{$article->id}}</ul>
+    <ul style="line-height:1.5">文章转自：{{$articleDetail->source}}</ul>
     @endif
 </p>
 <div style="font-size: medium;line-height: 2.0">{!! $articleDetail->detail !!}</div>   
